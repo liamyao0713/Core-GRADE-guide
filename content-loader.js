@@ -74,7 +74,7 @@
 
     window.coreGradeContentReady = new Promise(function(resolve) {
         whenReady(function() {
-            fetch('content.json', { cache: 'no-store' })
+            fetch('content.json?v=' + Date.now(), { cache: 'no-store' })
                 .then(function(response) {
                     if (!response.ok) throw new Error('content.json not available');
                     return response.json();

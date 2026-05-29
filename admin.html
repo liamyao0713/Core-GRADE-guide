@@ -405,6 +405,10 @@
             return (value || '').replace(/\s+/g, ' ').trim();
         }
 
+        function cacheBust(url) {
+            return url + (url.indexOf('?') === -1 ? '?' : '&') + 'v=' + Date.now();
+        }
+
         function sectionKey(section) {
             return section.type + '::' + section.id;
         }
@@ -495,7 +499,7 @@
 
         async function readContentJson() {
             try {
-                var response = await fetch('content.json', { cache: 'no-store' });
+                var response = await fetch(cacheBust('content.json'), { cache: 'no-store' });
                 if (!response.ok) return defaultContent();
                 var content = await response.json();
                 if (content && content.version === 3 && Array.isArray(content.pages)) return content;
@@ -512,7 +516,7 @@
 
             for (var i = 0; i < PAGE_DEFS.length; i += 1) {
                 var page = PAGE_DEFS[i];
-                var response = await fetch(page.path, { cache: 'no-store' });
+                var response = await fetch(cacheBust(page.path), { cache: 'no-store' });
                 if (!response.ok) throw new Error('Unable to load ' + page.path);
                 pages.push(scanPage(page, await response.text(), stored));
             }
