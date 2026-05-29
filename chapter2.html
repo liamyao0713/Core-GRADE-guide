@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core GRADE - Grading of Recommendations Assessment, Development and Evaluation</title>
+    <link rel="stylesheet" href="styles.css?v=3">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-book-medical"></i>
+                <span>Core GRADE</span>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <button class="search-toggle" id="searchToggle" aria-label="Search">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="site-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>Contents</h3>
+            </div>
+                                    <nav class="sidebar-nav" id="sidebar-nav">
+                <div class="nav-section">
+                    <h4 class="nav-section-title">1 Introductory Material</h4>
+                    <ul class="nav-list">
+                        <li><a href="#intro-what-is-core-grade-and-how-should-you-use-it-" class="sidebar-link level-2">1.1 What is Core GRADE and How Should You Use It?</a></li>
+                        <li><a href="#intro-what-motivated-the-development-of-core-grade-" class="sidebar-link level-2">1.2 What Motivated the Development of Core GRADE?</a></li>
+                        <li><a href="#intro-how-was-core-grade-created-" class="sidebar-link level-2">1.3 How Was Core GRADE created?</a></li>
+                        <li><a href="#intro-core-grade-complementary-material" class="sidebar-link level-2">1.4 Core GRADE Complementary Material</a></li>
+                        <li><a href="#intro-organizational-partnerships" class="sidebar-link level-2">1.5 Organizational partnerships</a></li>
+                        <li><a href="#intro-citing-core-grade" class="sidebar-link level-2">1.6 Citing Core GRADE</a></li>
+                        <li><a href="#intro-contributors" class="sidebar-link level-2">1.7 Contributors</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h4 class="nav-section-title">2 Overview of Core GRADE</h4>
+                    <ul class="nav-list">
+                        <li><a href="#intro-scope-of-core-grade" class="sidebar-link level-2">2.1 Scope of Core GRADE</a></li>
+                        <li><a href="#intro-the-core-grade-process-systematic-reviews-and-evidence-to-recommendations" class="sidebar-link level-2">2.2 The Core GRADE Process, Systematic Reviews and Evidence to Recommendations</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h4 class="nav-section-title">3 Planning the Systematic Review</h4>
+                    <ul class="nav-list">
+                        <li><a href="#intro-formulating-the-question" class="sidebar-link level-2">3.1 Framing the Question</a></li>
+                        <li><a href="#intro-identifying-outcomes-and-rating-their-importance" class="sidebar-link level-2">3.2 Rating the importance of outcomes</a></li>
+                        <li><a href="#intro-specific-considerations-in-planning-a-review-differing-effects-across-populations-interventions-or-outcomes" class="sidebar-link level-2">3.3 Considering the possibility of different effects across differences in populations, interventions, or outcomes</a></li>
+                        <li><a href="#intro-specific-considerations-in-planning-a-systematic-review-possible-need-for-indirect-evidence" class="sidebar-link level-2">3.4 Possible need for indirect evidence</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h4 class="nav-section-title">4 GRADE's Rating of Certainty of Evidence – an Overview</h4>
+                    <ul class="nav-list">
+                        <li><a href="#intro-the-first-step-in-assessing-certainty-choosing-a-target-of-certainty-rating" class="sidebar-link level-2">4.1 The First Step in Assessing Certainty: Choosing a Target of Certainty Rating</a></li>
+                        <li><a href="#intro-overview-of-the-process-of-choosing-a-target-and-possible-thresholds" class="sidebar-link level-3">Overview of the process of choosing a target and possible thresholds</a></li>
+                        <li><a href="#intro-assessing-if-the-effect-is-or-is-not-important-mid-as-threshold-" class="sidebar-link level-3">Assessing if the effect is or is not important (MID as threshold)</a></li>
+                        <li><a href="#intro-assessing-whether-a-true-underlying-treatment-effect-exists-null-as-threshold-" class="sidebar-link level-3">Assessing whether a true underlying treatment effect exists (null as threshold)</a></li>
+
+                        <li><a href="#intro-rating-certainty-of-evidence-imprecision" class="sidebar-link level-2">4.2 Rating certainty of evidence: Imprecision</a></li>
+                        <li><a href="#intro-imprecision-defined" class="sidebar-link level-3">Imprecision defined</a></li>
+                        <li><a href="#intro-rating-down-or-not-for-imprecision" class="sidebar-link level-3">Rating down (or not) for imprecision</a></li>
+                        <li><a href="#intro-rating-down-once-or-twice-for-imprecision" class="sidebar-link level-3">Rating down once or twice for imprecision</a></li>
+                        <li><a href="#intro-rating-down-once-or-twice-for-imprecision-general-principles" class="sidebar-link level-3">Rating down once or twice for imprecision: general principles</a></li>
+                        <li><a href="#intro-rating-down-for-imprecision-when-effects-are-large-and-sample-size-limited" class="sidebar-link level-3">Rating down for imprecision when effects are large and sample size limited</a></li>
+                        <li><a href="#intro-conclusion-imprecision" class="sidebar-link level-3">Conclusion</a></li>
+
+                        <li><a href="#intro-rating-certainty-of-evidence-inconsistency" class="sidebar-link level-2">4.3 Rating certainty of evidence: Inconsistency</a></li>
+                        <li><a href="#intro-what-do-we-mean-by-inconsistency-" class="sidebar-link level-3">What do we mean by inconsistency?</a></li>
+                        <li><a href="#intro-choosing-the-right-measure-of-effect-when-assessing-inconsistency" class="sidebar-link level-3">Choosing the right measure of effect when assessing inconsistency</a></li>
+                        <li><a href="#intro-core-grade-s-approach-to-preparing-for-inconsistency" class="sidebar-link level-3">Core GRADE's approach to preparing for inconsistency</a></li>
+                        <li><a href="#intro-three-options-for-possible-subgroups-with-different-intervention-effects" class="sidebar-link level-3">Three options for possible subgroups with different intervention effects</a></li>
+                        <li><a href="#intro-need-for-a-priori-hypotheses-with-a-specified-direction" class="sidebar-link level-3">Need for a priori hypotheses with a specified direction</a></li>
+                        <li><a href="#intro-criteria-for-judging-serious-inconsistency" class="sidebar-link level-3">Criteria for judging serious inconsistency</a></li>
+                        <li><a href="#intro-three-visual-criteria-from-forest-plots" class="sidebar-link level-3">Three visual criteria from forest plots</a></li>
+                        <li><a href="#intro-applying-visual-criteria-how-choice-of-threshold-affects-judgments-of-inconsistency" class="sidebar-link level-3">Applying visual criteria: how choice of threshold affects judgments of inconsistency</a></li>
+                        <li><a href="#intro-one-criterion-for-statistical-assessment" class="sidebar-link level-3">One criterion for statistical assessment</a></li>
+                        <li><a href="#intro-the-burden-of-proof-lies-with-those-claiming-a-subgroup-effect" class="sidebar-link level-3">The burden of proof lies with those claiming a subgroup effect</a></li>
+                        <li><a href="#intro-criteria-for-judging-the-credibility-of-subgroup-effects" class="sidebar-link level-3">Criteria for judging the credibility of subgroup effects</a></li>
+                        <li><a href="#intro-addressing-the-results-of-the-subgroup-credibility-exploration" class="sidebar-link level-3">Addressing the results of the subgroup credibility exploration</a></li>
+                        <li><a href="#intro-conclusion-inconsistency" class="sidebar-link level-3">Conclusion</a></li>
+
+                        <li><a href="#intro-rating-certainty-of-evidence-risk-of-bias" class="sidebar-link level-2">4.4 Rating certainty of evidence: Risk of Bias</a></li>
+                        <li><a href="#intro-what-you-will-learn-in-this-section" class="sidebar-link level-3">What you will learn in this section</a></li>
+                        <li><a href="#intro-what-do-we-mean-by-risk-of-bias" class="sidebar-link level-3">What do we mean by risk of bias</a></li>
+                        <li><a href="#intro-risk-of-bias-in-individual-studies-randomized-trials" class="sidebar-link level-3">Risk of bias in individual studies: Randomized trials</a></li>
+                        <li><a href="#intro-risk-of-bias-in-non-randomized-studies" class="sidebar-link level-3">Risk of bias in non-randomized studies</a></li>
+                        <li><a href="#intro-deciding-on-low-or-high-risk-of-bias-in-individual-randomized-controlled-trials-or-nrsi" class="sidebar-link level-3">Deciding on low or high risk of bias in individual randomized controlled trials or NRSI</a></li>
+                        <li><a href="#intro-case-series-and-single-arm-trials" class="sidebar-link level-3">Case series and single arm trials</a></li>
+                        <li><a href="#intro-risk-of-bias-may-differ-across-outcomes-in-a-study" class="sidebar-link level-3">Risk of bias may differ across outcomes in a study</a></li>
+                        <li><a href="#intro-rating-risk-of-bias-across-bodies-of-evidence" class="sidebar-link level-3">Rating risk of bias across bodies of evidence</a></li>
+                        <li><a href="#intro-conclusion-risk-of-bias" class="sidebar-link level-3">Conclusion</a></li>
+
+                        <li><a href="#intro-publication-bias" class="sidebar-link level-2">4.5 Publication Bias</a></li>
+                        <li><a href="#intro-what-is-publication-bias" class="sidebar-link level-3">What is publication bias</a></li>
+                        <li><a href="#intro-avoiding-publication-bias-comprehensive-search" class="sidebar-link level-3">Avoiding publication bias: comprehensive search</a></li>
+                        <li><a href="#intro-addressing-publication-bias" class="sidebar-link level-3">Addressing publication bias</a></li>
+                        <li><a href="#intro-commercial-funding" class="sidebar-link level-3">Commercial funding</a></li>
+                        <li><a href="#intro-funnel-plots-and-statistical-tests" class="sidebar-link level-3">Funnel plots and statistical tests</a></li>
+                        <li><a href="#intro-selective-outcome-reporting" class="sidebar-link level-3">Selective outcome reporting: Its relationship to publication bias and risk of bias</a></li>
+
+                        <li><a href="#intro-rating-up-certainty" class="sidebar-link level-2">4.6 Rating up certainty of evidence</a></li>
+                        <li><a href="#intro-large-magnitude-of-effect" class="sidebar-link level-3">Large magnitude of effect</a></li>
+                        <li><a href="#intro-dose-response-gradient" class="sidebar-link level-3">Dose-response gradient</a></li>
+
+                        <li><a href="#intro-rating-certainty-of-evidence-indirectness" class="sidebar-link level-2">4.7 Rating Certainty of Evidence: Indirectness</a></li>
+                        <li><a href="#intro-two-types-of-indirectness-indirect-comparisons" class="sidebar-link level-3">Two types of indirectness - Indirect comparisons</a></li>
+                        <li><a href="#intro-two-types-of-indirectness-indirectness-related-to-pico-issues" class="sidebar-link level-3">Two types of indirectness - Indirectness related to PICO issues</a></li>
+                        <li><a href="#intro-indirectness-concerns-in-guidelines-and-health-technology-assessments-versus-in-systematic-reviews" class="sidebar-link level-3">Indirectness concerns in guidelines and health technology assessments versus in systematic reviews</a></li>
+                        <li><a href="#intro-indirectness-versus-inconsistency" class="sidebar-link level-3">Indirectness versus inconsistency</a></li>
+                        <li><a href="#intro-indirectness-encountered-during-search-for-direct-evidence" class="sidebar-link level-3">Indirectness encountered during search for direct evidence</a></li>
+                        <li><a href="#intro-indirectness-encountered-during-deliberate-search-for-indirect-evidence" class="sidebar-link level-3">Indirectness encountered during deliberate search for indirect evidence</a></li>
+                        <li><a href="#intro-neglect-of-indirect-evidence" class="sidebar-link level-3">Neglect of indirect evidence</a></li>
+                        <li><a href="#intro-examples-of-indirectness-differences-in-population" class="sidebar-link level-3">Examples of indirectness: differences in population</a></li>
+                        <li><a href="#intro-differences-in-condition" class="sidebar-link level-3">Differences in condition</a></li>
+                        <li><a href="#intro-indirect-evidence-for-harms" class="sidebar-link level-3">Indirect evidence for harms</a></li>
+                        <li><a href="#intro-examples-of-indirectness-differences-in-interventions" class="sidebar-link level-3">Examples of indirectness: differences in interventions</a></li>
+                        <li><a href="#intro-non-adherence" class="sidebar-link level-3">Non-adherence</a></li>
+                        <li><a href="#intro-trials-that-allow-switching-treatments" class="sidebar-link level-3">Trials that allow switching treatments</a></li>
+                        <li><a href="#intro-change-of-intervention-technology" class="sidebar-link level-3">Change of intervention technology</a></li>
+                        <li><a href="#intro-examples-of-indirectness-differences-in-comparators" class="sidebar-link level-3">Examples of indirectness: differences in comparators</a></li>
+                        <li><a href="#intro-differences-in-outcomes" class="sidebar-link level-3">Differences in outcomes</a></li>
+                        <li><a href="#intro-conclusion-indirectness" class="sidebar-link level-3">Conclusion</a></li>
+
+                        <li><a href="#intro-presenting-the-evidence-in-summary-of-findings-tables" class="sidebar-link level-2">4.8 Presenting the evidence in summary of findings tables</a></li>
+                        <li><a href="#intro-components-of-summary-of-findings-tables" class="sidebar-link level-3">Components of summary of findings tables</a></li>
+                        <li><a href="#intro-presenting-dichotomous-outcomes-relative-measures-of-effect" class="sidebar-link level-3">Presenting dichotomous outcomes: Relative measures of effect</a></li>
+                        <li><a href="#intro-calculating-and-presenting-absolute-measures-of-effect-applying-relative-effects-to-baseline-risks" class="sidebar-link level-3">Calculating and presenting absolute measures of effect: Applying relative effects to baseline risks</a></li>
+                        <li><a href="#intro-different-risk-groups" class="sidebar-link level-3">Different risk groups</a></li>
+                        <li><a href="#intro-directly-calculating-risk-differences" class="sidebar-link level-3">Directly calculating risk differences</a></li>
+                        <li><a href="#intro-presenting-continuous-outcomes-when-studies-used-the-same-measure" class="sidebar-link level-3">Presenting continuous outcomes: When studies used the same measure</a></li>
+                        <li><a href="#intro-when-studies-used-different-measures" class="sidebar-link level-3">When studies used different measures</a></li>
+                        <li><a href="#intro-additional-considerations-for-summary-of-findings-tables-choosing-which-outcomes-to-present" class="sidebar-link level-3">Additional considerations for summary of findings tables: Choosing which outcomes to present</a></li>
+                        <li><a href="#intro-when-data-cannot-be-pooled" class="sidebar-link level-3">When data cannot be pooled</a></li>
+                        <li><a href="#intro-burden-of-treatment" class="sidebar-link level-3">Burden of treatment</a></li>
+                        <li><a href="#intro-direct-versus-indirect-evidence" class="sidebar-link level-3">Direct versus indirect evidence</a></li>
+                        <li><a href="#intro-when-data-are-available-from-randomized-trials-and-non-randomized-studies" class="sidebar-link level-3">When data are available from randomized trials and non-randomized studies</a></li>
+                        <li><a href="#intro-software" class="sidebar-link level-3">Software</a></li>
+                        <li><a href="#intro-conclusion-summary-of-findings" class="sidebar-link level-3">Conclusion</a></li>
+
+                        <li><a href="#intro-principles-of-moving-from-evidence-to-decisions" class="sidebar-link level-2">4.9 Principles of moving from evidence to decisions</a></li>
+                        <li><a href="#intro-grade-recommendations" class="sidebar-link level-3">GRADE recommendations</a></li>
+                        <li><a href="#intro-determinants-of-direction-and-strength-of-recommendations" class="sidebar-link level-3">Determinants of direction and strength of recommendations</a></li>
+                        <li><a href="#intro-organization-of-the-guideline-process" class="sidebar-link level-3">Organization of the guideline process</a></li>
+                        <li><a href="#intro-the-process-of-moving-from-evidence-to-recommendations" class="sidebar-link level-3">The process of moving from evidence to recommendations</a></li>
+                        <li><a href="#intro-perspective" class="sidebar-link level-3">Perspective</a></li>
+                        <li><a href="#intro-choosing-the-mid-for-each-critical-and-important-outcome-necessity-for-choosing-the-mid" class="sidebar-link level-3">Choosing the MID for each critical and important outcome: Necessity for choosing the MID</a></li>
+                        <li><a href="#intro-evidence-that-may-inform-choice-of-mid" class="sidebar-link level-3">Evidence that may inform choice of MID</a></li>
+                        <li><a href="#intro-choosing-mids" class="sidebar-link level-3">Choosing MIDs</a></li>
+                        <li><a href="#intro-balancing-benefits-harms-and-burdens" class="sidebar-link level-3">Balancing benefits, harms, and burdens</a></li>
+                        <li><a href="#intro-constructing-the-recommendations" class="sidebar-link level-3">Constructing the recommendations</a></li>
+                        <li><a href="#intro-only-in-research-setting-recommendations" class="sidebar-link level-3">Only in research setting recommendations</a></li>
+                        <li><a href="#intro-additional-examples-of-moving-from-evidence-to-recommendations-individual-patient-perspective" class="sidebar-link level-3">Additional examples of moving from evidence to recommendations: Individual patient perspective</a></li>
+                        <li><a href="#intro-population-perspective-and-secondary-evidence-to-decision-considerations" class="sidebar-link level-3">Population perspective and secondary evidence to decision considerations</a></li>
+                        <li><a href="#intro-optimized-presentation-of-recommendations" class="sidebar-link level-3">Optimized presentation of recommendations</a></li>
+                        <li><a href="#intro-enhancing-dissemination-of-guidelines" class="sidebar-link level-3">Enhancing dissemination of guidelines</a></li>
+                        <li><a href="#intro-conclusion-evidence-to-decisions" class="sidebar-link level-3">Conclusion</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <div class="resize-handle" id="leftResizeHandle"></div>
+
+        <main class="main-content">
+            <div id="chapter-overview-of-core-grade" class="chapter-container">
+            <div class="chapter-header">
+                <h2>2 Overview of Core GRADE</h2>
+                <button class="chapter-collapse-btn" aria-expanded="true">
+                    <i class="fas fa-chevron-up"></i>
+                </button>
+            </div>
+            <div class="chapter-content">
+                
+                <section id="intro-scope-of-core-grade" class="content-section">
+                    <div class="section-header">
+                        <h3>2.1 Scope of Core GRADE</h3>
+                    </div>
+                    <div class="content-article">
+                        <p>Core GRADE applies to the design, conduct, and analysis of systematic reviews as well as to use of their results in moving from evidence to decisions in clinical practice guidelines or health technology assessments. In the context of both reviews and guidelines, Core GRADE focuses on evidence comparing a single intervention with a single comparator. In the context of clinical practice guidelines, Core GRADE takes, primarily, an individual patient perspective. Nevertheless, the underlying principles also apply to a population or public health perspective that Core GRADE users may, in the context of clinical practice guidelines, consider as a secondary perspective. A glossary provides plain language definitions of key GRADE terms.</p>
+                    </div>
+                </section>
+
+                <section id="intro-the-core-grade-process-systematic-reviews-and-evidence-to-recommendations" class="content-section">
+                    <div class="section-header">
+                        <h3>2.2 The Core GRADE Process, Systematic Reviews and Evidence to Recommendations</h3>
+                    </div>
+                    <div class="content-article">
+                        <div class="figure-container" style="text-align: center; margin: 20px 0;">
+    <img src="images/Fig1.jpg" alt="Figure 1: Core GRADE process" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+</div>
+<div class="figure-reference">Figure 1 depicts each  of the key steps in using Core GRADE to create clinical practice guidelines or health technology assessment (HTA)reports: summarising the evidence, rating its certainty, and moving from evidence to recommendations. In figure 1, the left panel addresses the systematic review process, including the definition of the review question formulated using the Patient/Intervention/Comparator/Outcome (PICO) format. The process includes specification of the relative importance of each of the outcomes, followed by the collation and summarization of the evidence, including ratings of certainty (quality) of the evidence for each outcome.
+The right panel depicts the decision-making process involved in the development of clinical practice guidelines and HTA reports. That process involves a guideline panel or decision-making group that considers key issues of magnitude of benefit, harms and burdens, certainty of evidence, and patient or public values and preferences. Decision makers might also consider resources, feasibility, acceptability, and equity in coming to recommendations either for or against an intervention and further specifying recommendations as strong or conditional (weak). When considering a population or public health perspective, they will almost always consider issues of resources, feasibility, acceptability, and equity.</div>
+<p>When we refer to recommendations, we mean not only the highly structured guidance GRADE suggests for clinical practice guidelines but also the less formally structured guidance that HTA reports typically provide for their target decision makers. Although we focus our discussion on the structure of the guideline development process, it is also relevant to HTA and, excepting the process of moving from evidence to recommendations, to systematic reviews.</p>
+<p>We will now present in detail the first steps in applying GRADE that involve planning the systematic review. These involve specifying the PICO, the formulation of the question, rating the importance of the outcomes, considering the possibility of subgroup effects, and considering the possible need for indirect evidence.</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        
+
+        <div class="resize-handle" id="rightResizeHandle"></div>
+
+        <aside class="right-sidebar" id="rightSidebar">
+            <div class="right-sidebar-tabs">
+                <button class="tab-btn active" data-tab="resources">Additional resources</button>
+                <button class="tab-btn" data-tab="references">References</button>
+            </div>
+            
+            <div class="tab-content active" id="resources-tab">
+                <div class="resource-section">
+                    <h4 class="resource-section-title">LINKS & VIDEOS</h4>
+                    <div class="resource-item">
+                        <a href="https://www.gradeworkinggroup.org" target="_blank" class="resource-link">
+                            <strong>GRADE Working Group</strong>
+                            <span class="resource-desc">Official website of the GRADE Working Group</span>
+                        </a>
+                    </div>
+                    <div class="resource-item">
+                        <a href="https://www.linkedin.com/company/grade-working-group" target="_blank" class="resource-link">
+                            <strong>GRADE Working Group LinkedIn</strong>
+                            <span class="resource-desc">Stay informed on GRADE news and updates</span>
+                        </a>
+                    </div>
+                    <div class="resource-item">
+                        <a href="https://gdt.gradepro.org" target="_blank" class="resource-link">
+                            <strong>GRADEpro GDT</strong>
+                            <span class="resource-desc">Guideline Development Tool for creating Summary of Findings tables</span>
+                        </a>
+                    </div>
+                    <div class="resource-item">
+                        <a href="https://book.gradepro.org" target="_blank" class="resource-link">
+                            <strong>GRADE Book</strong>
+                            <span class="resource-desc">Comprehensive resource on the GRADE approach</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="references-tab">
+                <div class="reference-section">
+                    <h4 class="resource-section-title">KEY REFERENCES</h4>
+                    <div class="reference-item">
+                        <p class="reference-text">Guyatt G, Oxman AD, Akl EA, et al. GRADE guidelines: 1. Introduction-GRADE evidence profiles and summary of findings tables. J Clin Epidemiol. 2011;64(4):383-394.</p>
+                    </div>
+                    <div class="reference-item">
+                        <p class="reference-text">Guyatt GH, Oxman AD, Vist GE, et al. GRADE: an emerging consensus on rating quality of evidence and strength of recommendations. BMJ. 2008;336(7650):924-926.</p>
+                    </div>
+                    <div class="reference-item">
+                        <p class="reference-text">Balshem H, Helfand M, Schünemann HJ, et al. GRADE guidelines: 3. Rating the quality of evidence. J Clin Epidemiol. 2011;64(4):401-406.</p>
+                    </div>
+                    <div class="reference-item">
+                        <p class="reference-text">Andrews J, Guyatt G, Oxman AD, et al. GRADE guidelines: 15. Going from evidence to recommendations-determinants of a recommendation's direction and strength. J Clin Epidemiol. 2013;66(7):721-735.</p>
+                    </div>
+                    <div class="reference-item">
+                        <p class="reference-text">Schünemann HJ, Al-Ansari A, Akl EA, et al. A GRADE Working Group approach for rating the quality of test accuracy studies. BMJ. 2016;355:i5062.</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="resize-handle" id="rightResizeHandle"></div>
+
+        <aside class="right-sidebar" id="rightSidebar">
+            <div class="right-sidebar-tabs">
+                <button class="tab-btn active" data-tab="resources">Additional resources</button>
+                <button class="tab-btn" data-tab="references">References</button>
+            </div>
+            <div class="tab-content active" id="resources-tab">
+                <div class="resource-section">
+                    <h4 class="resource-section-title">RELATED CORE GRADE SECTIONS</h4>
+                    <ul class="resource-links">
+                        <li><a href="#">1: Introductory Material</a></li>
+                        <li><a href="#">3: Planning the Systematic Review</a></li>
+                        <li><a href="#">4: GRADE's Rating of Certainty of Evidence</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content" id="references-tab">
+                <div class="reference-section">
+                    <h4 class="resource-section-title">KEY REFERENCES</h4>
+                    <div class="reference-item">
+                        <p class="reference-text">Guyatt G, Oxman AD, Akl EA, et al. GRADE guidelines: 1. Introduction-GRADE evidence profiles and summary of findings tables. J Clin Epidemiol. 2011;64(4):383-394.</p>
+                    </div>
+                    <div class="reference-item">
+                        <p class="reference-text">Guyatt GH, Oxman AD, Vist GE, et al. GRADE: an emerging consensus on rating quality of evidence and strength of recommendations. BMJ. 2008;336(7650):924-926.</p>
+                    </div>
+                    <div class="reference-item">
+                        <p class="reference-text">Balshem H, Helfand M, Schünemann HJ, et al. GRADE guidelines: 3. Rating the quality of evidence. J Clin Epidemiol. 2011;64(4):401-406.</p>
+                    </div>
+                    <div class="reference-item">
+                        <p class="reference-text">Andrews J, Guyatt G, Oxman AD, et al. GRADE guidelines: 15. Going from evidence to recommendations-determinants of a recommendation's direction and strength. J Clin Epidemiol. 2013;66(7):721-735.</p>
+                    </div>
+                    <div class="reference-item">
+                        <p class="reference-text">Schünemann HJ, Al-Ansari A, Akl EA, et al. A GRADE Working Group approach for rating the quality of test accuracy studies. BMJ. 2016;355:i5062.</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</main>
+
+    <script src="script.js?v=3"></script>
+
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-panel">
+            <div class="search-panel-header">
+                <div class="search-input-wrapper">
+                    <i class="fas fa-search"></i>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search..." autocomplete="off">
+                    <button class="search-clear" id="searchClear" aria-label="Clear search">&times;</button>
+                </div>
+                <button class="search-close" id="searchClose" aria-label="Close search">&times;</button>
+            </div>
+            <div class="search-panel-body">
+                <div class="search-info" id="searchInfo"></div>
+                <div class="search-results" id="searchResults"></div>
+            </div>
+            <div class="search-nav" id="searchNav">
+                <button class="search-nav-btn" id="searchPrev" disabled><i class="fas fa-chevron-up"></i> Previous</button>
+                <span class="search-nav-count" id="searchNavCount"></span>
+                <button class="search-nav-btn" id="searchNext" disabled>Next <i class="fas fa-chevron-down"></i></button>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="https://linkedin.com/in/guyattgh/" target="_blank" class="footer-link footer-link-icon" title="LinkedIn: linkedin.com/in/guyattgh">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://x.com/GuyattGH" target="_blank" class="footer-link footer-link-icon" title="X: @GuyattGH">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="https://bsky.app/profile/guyattgh.bsky.social" target="_blank" class="footer-link footer-link-icon" title="Bluesky: @guyattgh.bsky.social">
+                    <i class="fas fa-cloud"></i>
+                </a>
+                <a href="mailto:guyatt@mcmaster.ca" class="footer-link footer-link-icon" title="Email: guyatt@mcmaster.ca">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

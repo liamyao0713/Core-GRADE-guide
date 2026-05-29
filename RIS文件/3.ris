@@ -1,0 +1,29 @@
+TY  - JOUR
+T1  - Core GRADE 2: choosing the target of certainty rating and assessing imprecision
+JF  - BMJ
+JO  - BMJ
+DO  - 10.1136/bmj-2024-081904
+VL  - 389
+SP  - e081904
+AU  - Guyatt, Gordon
+AU  - Zeng, Linan
+AU  - Brignardello-Petersen, Romina
+AU  - Prasad, Manya
+AU  - De Beer, Hans
+AU  - Murad, M Hassan
+AU  - Iorio, Alfonso
+AU  - Agarwal, Arnav
+AU  - Yao, Liang
+AU  - Agoritsas, Thomas
+AU  - Rylance, Jamie
+AU  - Mustafa, Reem A
+AU  - Vandvik, Per Olav
+AU  - Eachempati, Prashanti
+AU  - Zhai, Chunjuan
+AU  - Zhang, Lingli
+AU  - Montori, Victor M
+AU  - Hultcrantz, Monica
+Y1  - 2025/04/29
+UR  - https://www.bmj.com/content/389/bmj-2024-081904.abstract
+N2  - This second article in a seven part series presents the Core GRADE (Grading of Recommendations Assessment, Development and Evaluation) approach to deciding on the target of the certainty rating, and decisions about rating down certainty of evidence due to imprecision. Core GRADE users assess if the true underlying treatment effect is important or not in relation to the minimal important difference (MID) or, alternatively, if a true underlying treatment effect exists. The location of the point estimate of effect in relation to the chosen threshold determines the target. For instance, using the MID thresholds, a point estimate greater than the MID suggests an important effect and less than the MID, an unimportant or little to no effect. Users then rate down for imprecision if the 95% confidence interval crosses the MID for benefit or harm.Summary pointsCore GRADE (Grading of Recommendations Assessment, Development and Evaluation) users may assess their certainty in an important or unimportant effect (using the minimal important difference threshold), which often simplifies and clarifies ratings of imprecision and interpretation of resultsIn some situations, when wanting to minimise value judgments, Core GRADE users may use the null threshold to assess their certainty in a true underlying treatment effectWhen deciding whether to rate down certainty for imprecision, Core GRADE users will consider whether the confidence interval (CI) crosses the chosen threshold and will usually rate down two levels if the CI includes both an important benefit and an important harmIf the CI does not cross a threshold but the effect is very large, Core GRADE users will consider rating down for imprecision if the sample size or number of events are too small (ie, not meeting the optimal information size)This is the second paper in a series describing the essentials of GRADE (Grading of Recommendations Assessment, …
+ER  - 

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core GRADE - Grading of Recommendations Assessment, Development and Evaluation</title>
+    <link rel="stylesheet" href="styles.css?v=3">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-book-medical"></i>
+                <span>Core GRADE</span>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <button class="search-toggle" id="searchToggle" aria-label="Search">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="site-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>Contents</h3>
+            </div>
+                                    <nav class="sidebar-nav" id="sidebar-nav">
+                <div class="nav-section">
+                    <h4 class="nav-section-title">1 Introductory Material</h4>
+                    <ul class="nav-list">
+                        <li><a href="#intro-what-is-core-grade-and-how-should-you-use-it-" class="sidebar-link level-2">1.1 What is Core GRADE and How Should You Use It?</a></li>
+                        <li><a href="#intro-what-motivated-the-development-of-core-grade-" class="sidebar-link level-2">1.2 What Motivated the Development of Core GRADE?</a></li>
+                        <li><a href="#intro-how-was-core-grade-created-" class="sidebar-link level-2">1.3 How Was Core GRADE created?</a></li>
+                        <li><a href="#intro-core-grade-complementary-material" class="sidebar-link level-2">1.4 Core GRADE Complementary Material</a></li>
+                        <li><a href="#intro-organizational-partnerships" class="sidebar-link level-2">1.5 Organizational partnerships</a></li>
+                        <li><a href="#intro-citing-core-grade" class="sidebar-link level-2">1.6 Citing Core GRADE</a></li>
+                        <li><a href="#intro-contributors" class="sidebar-link level-2">1.7 Contributors</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h4 class="nav-section-title">2 Overview of Core GRADE</h4>
+                    <ul class="nav-list">
+                        <li><a href="#intro-scope-of-core-grade" class="sidebar-link level-2">2.1 Scope of Core GRADE</a></li>
+                        <li><a href="#intro-the-core-grade-process-systematic-reviews-and-evidence-to-recommendations" class="sidebar-link level-2">2.2 The Core GRADE Process, Systematic Reviews and Evidence to Recommendations</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h4 class="nav-section-title">3 Planning the Systematic Review</h4>
+                    <ul class="nav-list">
+                        <li><a href="#intro-formulating-the-question" class="sidebar-link level-2">3.1 Framing the Question</a></li>
+                        <li><a href="#intro-identifying-outcomes-and-rating-their-importance" class="sidebar-link level-2">3.2 Rating the importance of outcomes</a></li>
+                        <li><a href="#intro-specific-considerations-in-planning-a-review-differing-effects-across-populations-interventions-or-outcomes" class="sidebar-link level-2">3.3 Considering the possibility of different effects across differences in populations, interventions, or outcomes</a></li>
+                        <li><a href="#intro-specific-considerations-in-planning-a-systematic-review-possible-need-for-indirect-evidence" class="sidebar-link level-2">3.4 Possible need for indirect evidence</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h4 class="nav-section-title">4 GRADE's Rating of Certainty of Evidence – an Overview</h4>
+                    <ul class="nav-list">
+                        <li><a href="#intro-the-first-step-in-assessing-certainty-choosing-a-target-of-certainty-rating" class="sidebar-link level-2">4.1 The First Step in Assessing Certainty: Choosing a Target of Certainty Rating</a></li>
+                        <li><a href="#intro-overview-of-the-process-of-choosing-a-target-and-possible-thresholds" class="sidebar-link level-3">Overview of the process of choosing a target and possible thresholds</a></li>
+                        <li><a href="#intro-assessing-if-the-effect-is-or-is-not-important-mid-as-threshold-" class="sidebar-link level-3">Assessing if the effect is or is not important (MID as threshold)</a></li>
+                        <li><a href="#intro-assessing-whether-a-true-underlying-treatment-effect-exists-null-as-threshold-" class="sidebar-link level-3">Assessing whether a true underlying treatment effect exists (null as threshold)</a></li>
+
+                        <li><a href="#intro-rating-certainty-of-evidence-imprecision" class="sidebar-link level-2">4.2 Rating certainty of evidence: Imprecision</a></li>
+                        <li><a href="#intro-imprecision-defined" class="sidebar-link level-3">Imprecision defined</a></li>
+                        <li><a href="#intro-rating-down-or-not-for-imprecision" class="sidebar-link level-3">Rating down (or not) for imprecision</a></li>
+                        <li><a href="#intro-rating-down-once-or-twice-for-imprecision" class="sidebar-link level-3">Rating down once or twice for imprecision</a></li>
+                        <li><a href="#intro-rating-down-once-or-twice-for-imprecision-general-principles" class="sidebar-link level-3">Rating down once or twice for imprecision: general principles</a></li>
+                        <li><a href="#intro-rating-down-for-imprecision-when-effects-are-large-and-sample-size-limited" class="sidebar-link level-3">Rating down for imprecision when effects are large and sample size limited</a></li>
+                        <li><a href="#intro-conclusion-imprecision" class="sidebar-link level-3">Conclusion</a></li>
+
+                        <li><a href="#intro-rating-certainty-of-evidence-inconsistency" class="sidebar-link level-2">4.3 Rating certainty of evidence: Inconsistency</a></li>
+                        <li><a href="#intro-what-do-we-mean-by-inconsistency-" class="sidebar-link level-3">What do we mean by inconsistency?</a></li>
+                        <li><a href="#intro-choosing-the-right-measure-of-effect-when-assessing-inconsistency" class="sidebar-link level-3">Choosing the right measure of effect when assessing inconsistency</a></li>
+                        <li><a href="#intro-core-grade-s-approach-to-preparing-for-inconsistency" class="sidebar-link level-3">Core GRADE's approach to preparing for inconsistency</a></li>
+                        <li><a href="#intro-three-options-for-possible-subgroups-with-different-intervention-effects" class="sidebar-link level-3">Three options for possible subgroups with different intervention effects</a></li>
+                        <li><a href="#intro-need-for-a-priori-hypotheses-with-a-specified-direction" class="sidebar-link level-3">Need for a priori hypotheses with a specified direction</a></li>
+                        <li><a href="#intro-criteria-for-judging-serious-inconsistency" class="sidebar-link level-3">Criteria for judging serious inconsistency</a></li>
+                        <li><a href="#intro-three-visual-criteria-from-forest-plots" class="sidebar-link level-3">Three visual criteria from forest plots</a></li>
+                        <li><a href="#intro-applying-visual-criteria-how-choice-of-threshold-affects-judgments-of-inconsistency" class="sidebar-link level-3">Applying visual criteria: how choice of threshold affects judgments of inconsistency</a></li>
+                        <li><a href="#intro-one-criterion-for-statistical-assessment" class="sidebar-link level-3">One criterion for statistical assessment</a></li>
+                        <li><a href="#intro-the-burden-of-proof-lies-with-those-claiming-a-subgroup-effect" class="sidebar-link level-3">The burden of proof lies with those claiming a subgroup effect</a></li>
+                        <li><a href="#intro-criteria-for-judging-the-credibility-of-subgroup-effects" class="sidebar-link level-3">Criteria for judging the credibility of subgroup effects</a></li>
+                        <li><a href="#intro-addressing-the-results-of-the-subgroup-credibility-exploration" class="sidebar-link level-3">Addressing the results of the subgroup credibility exploration</a></li>
+                        <li><a href="#intro-conclusion-inconsistency" class="sidebar-link level-3">Conclusion</a></li>
+
+                        <li><a href="#intro-rating-certainty-of-evidence-risk-of-bias" class="sidebar-link level-2">4.4 Rating certainty of evidence: Risk of Bias</a></li>
+                        <li><a href="#intro-what-you-will-learn-in-this-section" class="sidebar-link level-3">What you will learn in this section</a></li>
+                        <li><a href="#intro-what-do-we-mean-by-risk-of-bias" class="sidebar-link level-3">What do we mean by risk of bias</a></li>
+                        <li><a href="#intro-risk-of-bias-in-individual-studies-randomized-trials" class="sidebar-link level-3">Risk of bias in individual studies: Randomized trials</a></li>
+                        <li><a href="#intro-risk-of-bias-in-non-randomized-studies" class="sidebar-link level-3">Risk of bias in non-randomized studies</a></li>
+                        <li><a href="#intro-deciding-on-low-or-high-risk-of-bias-in-individual-randomized-controlled-trials-or-nrsi" class="sidebar-link level-3">Deciding on low or high risk of bias in individual randomized controlled trials or NRSI</a></li>
+                        <li><a href="#intro-case-series-and-single-arm-trials" class="sidebar-link level-3">Case series and single arm trials</a></li>
+                        <li><a href="#intro-risk-of-bias-may-differ-across-outcomes-in-a-study" class="sidebar-link level-3">Risk of bias may differ across outcomes in a study</a></li>
+                        <li><a href="#intro-rating-risk-of-bias-across-bodies-of-evidence" class="sidebar-link level-3">Rating risk of bias across bodies of evidence</a></li>
+                        <li><a href="#intro-conclusion-risk-of-bias" class="sidebar-link level-3">Conclusion</a></li>
+
+                        <li><a href="#intro-publication-bias" class="sidebar-link level-2">4.5 Publication Bias</a></li>
+                        <li><a href="#intro-what-is-publication-bias" class="sidebar-link level-3">What is publication bias</a></li>
+                        <li><a href="#intro-avoiding-publication-bias-comprehensive-search" class="sidebar-link level-3">Avoiding publication bias: comprehensive search</a></li>
+                        <li><a href="#intro-addressing-publication-bias" class="sidebar-link level-3">Addressing publication bias</a></li>
+                        <li><a href="#intro-commercial-funding" class="sidebar-link level-3">Commercial funding</a></li>
+                        <li><a href="#intro-funnel-plots-and-statistical-tests" class="sidebar-link level-3">Funnel plots and statistical tests</a></li>
+                        <li><a href="#intro-selective-outcome-reporting" class="sidebar-link level-3">Selective outcome reporting: Its relationship to publication bias and risk of bias</a></li>
+
+                        <li><a href="#intro-rating-up-certainty" class="sidebar-link level-2">4.6 Rating up certainty of evidence</a></li>
+                        <li><a href="#intro-large-magnitude-of-effect" class="sidebar-link level-3">Large magnitude of effect</a></li>
+                        <li><a href="#intro-dose-response-gradient" class="sidebar-link level-3">Dose-response gradient</a></li>
+
+                        <li><a href="#intro-rating-certainty-of-evidence-indirectness" class="sidebar-link level-2">4.7 Rating Certainty of Evidence: Indirectness</a></li>
+                        <li><a href="#intro-two-types-of-indirectness-indirect-comparisons" class="sidebar-link level-3">Two types of indirectness - Indirect comparisons</a></li>
+                        <li><a href="#intro-two-types-of-indirectness-indirectness-related-to-pico-issues" class="sidebar-link level-3">Two types of indirectness - Indirectness related to PICO issues</a></li>
+                        <li><a href="#intro-indirectness-concerns-in-guidelines-and-health-technology-assessments-versus-in-systematic-reviews" class="sidebar-link level-3">Indirectness concerns in guidelines and health technology assessments versus in systematic reviews</a></li>
+                        <li><a href="#intro-indirectness-versus-inconsistency" class="sidebar-link level-3">Indirectness versus inconsistency</a></li>
+                        <li><a href="#intro-indirectness-encountered-during-search-for-direct-evidence" class="sidebar-link level-3">Indirectness encountered during search for direct evidence</a></li>
+                        <li><a href="#intro-indirectness-encountered-during-deliberate-search-for-indirect-evidence" class="sidebar-link level-3">Indirectness encountered during deliberate search for indirect evidence</a></li>
+                        <li><a href="#intro-neglect-of-indirect-evidence" class="sidebar-link level-3">Neglect of indirect evidence</a></li>
+                        <li><a href="#intro-examples-of-indirectness-differences-in-population" class="sidebar-link level-3">Examples of indirectness: differences in population</a></li>
+                        <li><a href="#intro-differences-in-condition" class="sidebar-link level-3">Differences in condition</a></li>
+                        <li><a href="#intro-indirect-evidence-for-harms" class="sidebar-link level-3">Indirect evidence for harms</a></li>
+                        <li><a href="#intro-examples-of-indirectness-differences-in-interventions" class="sidebar-link level-3">Examples of indirectness: differences in interventions</a></li>
+                        <li><a href="#intro-non-adherence" class="sidebar-link level-3">Non-adherence</a></li>
+                        <li><a href="#intro-trials-that-allow-switching-treatments" class="sidebar-link level-3">Trials that allow switching treatments</a></li>
+                        <li><a href="#intro-change-of-intervention-technology" class="sidebar-link level-3">Change of intervention technology</a></li>
+                        <li><a href="#intro-examples-of-indirectness-differences-in-comparators" class="sidebar-link level-3">Examples of indirectness: differences in comparators</a></li>
+                        <li><a href="#intro-differences-in-outcomes" class="sidebar-link level-3">Differences in outcomes</a></li>
+                        <li><a href="#intro-conclusion-indirectness" class="sidebar-link level-3">Conclusion</a></li>
+
+                        <li><a href="#intro-presenting-the-evidence-in-summary-of-findings-tables" class="sidebar-link level-2">4.8 Presenting the evidence in summary of findings tables</a></li>
+                        <li><a href="#intro-components-of-summary-of-findings-tables" class="sidebar-link level-3">Components of summary of findings tables</a></li>
+                        <li><a href="#intro-presenting-dichotomous-outcomes-relative-measures-of-effect" class="sidebar-link level-3">Presenting dichotomous outcomes: Relative measures of effect</a></li>
+                        <li><a href="#intro-calculating-and-presenting-absolute-measures-of-effect-applying-relative-effects-to-baseline-risks" class="sidebar-link level-3">Calculating and presenting absolute measures of effect: Applying relative effects to baseline risks</a></li>
+                        <li><a href="#intro-different-risk-groups" class="sidebar-link level-3">Different risk groups</a></li>
+                        <li><a href="#intro-directly-calculating-risk-differences" class="sidebar-link level-3">Directly calculating risk differences</a></li>
+                        <li><a href="#intro-presenting-continuous-outcomes-when-studies-used-the-same-measure" class="sidebar-link level-3">Presenting continuous outcomes: When studies used the same measure</a></li>
+                        <li><a href="#intro-when-studies-used-different-measures" class="sidebar-link level-3">When studies used different measures</a></li>
+                        <li><a href="#intro-additional-considerations-for-summary-of-findings-tables-choosing-which-outcomes-to-present" class="sidebar-link level-3">Additional considerations for summary of findings tables: Choosing which outcomes to present</a></li>
+                        <li><a href="#intro-when-data-cannot-be-pooled" class="sidebar-link level-3">When data cannot be pooled</a></li>
+                        <li><a href="#intro-burden-of-treatment" class="sidebar-link level-3">Burden of treatment</a></li>
+                        <li><a href="#intro-direct-versus-indirect-evidence" class="sidebar-link level-3">Direct versus indirect evidence</a></li>
+                        <li><a href="#intro-when-data-are-available-from-randomized-trials-and-non-randomized-studies" class="sidebar-link level-3">When data are available from randomized trials and non-randomized studies</a></li>
+                        <li><a href="#intro-software" class="sidebar-link level-3">Software</a></li>
+                        <li><a href="#intro-conclusion-summary-of-findings" class="sidebar-link level-3">Conclusion</a></li>
+
+                        <li><a href="#intro-principles-of-moving-from-evidence-to-decisions" class="sidebar-link level-2">4.9 Principles of moving from evidence to decisions</a></li>
+                        <li><a href="#intro-grade-recommendations" class="sidebar-link level-3">GRADE recommendations</a></li>
+                        <li><a href="#intro-determinants-of-direction-and-strength-of-recommendations" class="sidebar-link level-3">Determinants of direction and strength of recommendations</a></li>
+                        <li><a href="#intro-organization-of-the-guideline-process" class="sidebar-link level-3">Organization of the guideline process</a></li>
+                        <li><a href="#intro-the-process-of-moving-from-evidence-to-recommendations" class="sidebar-link level-3">The process of moving from evidence to recommendations</a></li>
+                        <li><a href="#intro-perspective" class="sidebar-link level-3">Perspective</a></li>
+                        <li><a href="#intro-choosing-the-mid-for-each-critical-and-important-outcome-necessity-for-choosing-the-mid" class="sidebar-link level-3">Choosing the MID for each critical and important outcome: Necessity for choosing the MID</a></li>
+                        <li><a href="#intro-evidence-that-may-inform-choice-of-mid" class="sidebar-link level-3">Evidence that may inform choice of MID</a></li>
+                        <li><a href="#intro-choosing-mids" class="sidebar-link level-3">Choosing MIDs</a></li>
+                        <li><a href="#intro-balancing-benefits-harms-and-burdens" class="sidebar-link level-3">Balancing benefits, harms, and burdens</a></li>
+                        <li><a href="#intro-constructing-the-recommendations" class="sidebar-link level-3">Constructing the recommendations</a></li>
+                        <li><a href="#intro-only-in-research-setting-recommendations" class="sidebar-link level-3">Only in research setting recommendations</a></li>
+                        <li><a href="#intro-additional-examples-of-moving-from-evidence-to-recommendations-individual-patient-perspective" class="sidebar-link level-3">Additional examples of moving from evidence to recommendations: Individual patient perspective</a></li>
+                        <li><a href="#intro-population-perspective-and-secondary-evidence-to-decision-considerations" class="sidebar-link level-3">Population perspective and secondary evidence to decision considerations</a></li>
+                        <li><a href="#intro-optimized-presentation-of-recommendations" class="sidebar-link level-3">Optimized presentation of recommendations</a></li>
+                        <li><a href="#intro-enhancing-dissemination-of-guidelines" class="sidebar-link level-3">Enhancing dissemination of guidelines</a></li>
+                        <li><a href="#intro-conclusion-evidence-to-decisions" class="sidebar-link level-3">Conclusion</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <div class="resize-handle" id="leftResizeHandle"></div>
+
+        <main class="main-content">
+            <div id="chapter-introduction" class="chapter-container">
+            <div class="chapter-header">
+                <h2>1 Introductory Material</h2>
+                <button class="chapter-collapse-btn" aria-expanded="true">
+                    <i class="fas fa-chevron-up"></i>
+                </button>
+            </div>
+            <div class="chapter-content">
+
+                <section id="intro-what-is-core-grade-and-how-should-you-use-it-" class="content-section">
+                    <div class="section-header">
+                        <h3>1.1 What is Core GRADE and How Should You Use It?</h3>
+                    </div>
+                    <div class="content-article">
+                        <p>Core GRADE provides a distillation of all that is essential from prior GRADE guidance to produce rigorous GRADE applications to systematic reviews, clinical practice guidelines, and health technology assessments (HTA). In other words: if you wish to use GRADE to create a review, a guideline, or an HTA for paired comparisons of healthcare strategies, this is the only place you have to look.</p>
+<p>Core GRADE also includes refinements, all of which are simplifications, clarifications, or presentations that enhance the clarity and ease of GRADE use. Key innovations include an emphasis on viewing both individual GRADE domains and overall certainty as continua; clarification of decisions related to addressing potential relative and absolute subgroup effects when formulating patient/intervention/comparator/outcome (PICO) questions; and, most important, the use of flow charts and algorithms to guide GRADE implementation.</p>
+<p>Finally, Core GRADE includes many examples, and quite a few appendices. Most of the appendices provide additional illustrative examples of material in the text. On occasion, they present extensions that go beyond Core GRADE. We include these primarily for readers who may be wondering about how we see more complex guidance that the Core does not include.</p>
+                    </div>
+                </section>
+
+                <section id="intro-what-motivated-the-development-of-core-grade-" class="content-section">
+                    <div class="section-header">
+                        <h3>1.2 What Motivated the Development of Core GRADE?</h3>
+                    </div>
+                    <div class="content-article">
+                        <p>GRADE has had an enormous impact on the world of evidence synthesis and evidence-based recommendations. Reasons for the rapidity of GRADE’s widespread uptake included its initial practicality and user friendliness, combined with rigor and detailed guidance for application.</p>
+<p>That initial user friendliness has unfortunately been seriously undermined by increasing complexity and difficulty navigating the large body of GRADE guidance. More than 60 publications now provide guidance on GRADE, many with levels of complexity that GRADE users find challenging. Secondly, keeping up with evolving GRADE guidance has proved daunting for users required to find and process continually appearing new guidance that is poorly organised and difficult to navigate.</p>
+<p>We created Core GRADE in response to the need for a concise, well organised exposition of the key GRADE elements that users require to ensure that their judgments about certainty of evidence and strength of recommendations are optimal. Core GRADE serves the needs of systematic review authors, guideline developers, and health technology assessment practitioners—individuals who compare healthcare strategies and are interested in using GRADE. Another audience is EBM educators who help clinicians to understand and use GRADE to guide clinical care. Core GRADE solves the problem of outdated and poorly organised guidance resulting from the sequential publication of the many GRADE papers over 20 years.</p>
+                    </div>
+                </section>
+
+                <section id="intro-how-was-core-grade-created-" class="content-section">
+                    <div class="section-header">
+                        <h3>1.3 How Was Core GRADE created?</h3>
+                    </div>
+                    <div class="content-article">
+                        <p>The authors of Core GRADE, who included those primarily responsible for the key papers in the original Journal of Clinical Epidemiology series, began by identifying and reviewing in detail all prior GRADE guidance. These included papers published under the auspices of the GRADE working group and other guidance published by GRADE experts. For each item of guidance, we asked ourselves: is this guidance necessary to make sound judgments on certainty of evidence and direction and strength of recommendations. If the answer to the question was no, you won’t find the item in Core GRADE. Core GRADE thus includes all the essentials for paired comparisons of healthcare strategies from prior GRADE writings, and nothing beyond the essentials, however elegant or sophisticated.</p>
+<p>Some have raised questions about whether Core GRADE is really GRADE. The process by which we developed the Core demonstrates that nothing could be more GRADE than the Core - as this one minute video illustrates: <a href="https://vimeo.com/1151358052?share=copy&amp;fl=sv&amp;fe=ci#t=3" target="_blank">https://vimeo.com/1151358052?share=copy&amp;fl=sv&amp;fe=ci#t=3</a></p>
+                    </div>
+                </section>
+
+                <section id="intro-core-grade-complementary-material" class="content-section">
+                    <div class="section-header">
+                        <h3>1.4 Core GRADE Complementary Material</h3>
+                    </div>
+                    <div class="content-article">
+                        <p>This website contains additional material that you may find of use in applying Core GRADE.</p>
+<p>Frequently asked questions: Core GRADE users have asked questions that arose in their systematic reviews and guidelines. We have provided answers to these questions, in the process clarifiying particular points of GRADE guidance. If you have a question about GRADE use that you would like answered, just send an email to guyatt@mcmaster.ca. You will receive a quick response.</p>
+<p>JUDGE, a step-by-step tool for GRADE certainty ratings: The website includes a new instrument aiding reviewers in application of Core GRADE. Because GRADE guidance remains largely conceptual, a complementary tool that translates these principles into step-by-step processes that users can consistently apply is needed. JUDGE is this tool – it helps Justifying Uncertainty Decisions for GRADEing Evidence. Core GRADE’s explicit algorithms and flowcharts clarify the logic of certainty assessment and JUDGE converts each element of the certainty-assessment reasoning pathway into a sequence of structured signalling questions, guiding users through transparent judgments. By embedding Core GRADE into explicit decision pathways, JUDGE combines conceptual rigour with practical usability, supporting application of GRADE across systematic reviews for users with differing levels of expertise.</p>
+<p>ROBUST-RCT for assessing risk of bias in RCTs: The website also includes all you need to apply the instrument for assessing risk of bias, ROBUST-RCT, that we recommend. ROBUST-RCT achieves the perfect balance between simplicity and methodological rigor and includes important innovations. First, it proposes a two-step approach for assessing core items: evaluation of whether methodological safeguards had been implemented and then judge the extent to which any deficits in instituting safeguards resulted in risk of bias. Second, it suggests eight optional items that systematic reviewers can, if the issues are important for their review, include.</p>
+<p>ICEMAN for assessing the certainty of subgroup analysis: The only formally structured instrument available for addressing the credibility of subgroup analyses. ICEMAN offers versions for RCTs and, most relevant for GRADE, systematic reviews. The instrument provides a small set of rating items and an overall credibility item that integrates well with the GRADE approach. Since its publication in 2020, ICEMAN has received wide use and positive feedback from GRADE users. You can find all you need to use ICEMAN, including a user manual, at www.iceman.help.</p>
+                    </div>
+                </section>
+
+                <section id="intro-organizational-partnerships" class="content-section">
+                    <div class="section-header">
+                        <h3>1.5 Organizational partnerships</h3>
+                    </div>
+                    <div class="content-article">
+                        <p>Core GRADE is a creation of its authors in partnership with the MAGIC Evidence Ecosystem Foundation <a href="https://magicevidence.org/" target="_blank">https://magicevidence.org/</a> a non-profit organization promoting high-value, low-waste healthcare via a digital ecosystem of trustworthy guidelines, evidence summaries, and decision aids. In producing the Core GRADE website, we have also worked in partnership with McMaster University; McMaster is hosting this website.</p>
+<p>Feedback Core GRADE is a process in evolution. We welcome feedback, particularly in how we can improve Core GRADE. Whatever you find unclear, too complicated, unnecessary, or could be better expressed please let us know. Just send an email to guyatt@mcmaster.ca</p>
+<p>What this Resource Doesn’t Do The Core GRADE website takes a minimalist approach to citations. If you wish to explore the full range of articles relevant to Core GRADE you will need to go back to the BMJ papers.</p>
+<p>Moreover, If you wish to include more complex or sophisticated guidance beyond the essentials of GRADE, you will need to consult published GRADE papers. For some authors, and some target audiences, this may be desirable. However, is including more complex considerations ever necessary to ensure trustworthy GRADE ratings of certainty or recommendation direction and strength? Given that Core GRADE includes all elements necessary to make trustworthy judgments regarding certainty of evidence grading recommendations, we think not.</p>
+                    </div>
+                </section>
+
+                <section id="intro-citing-core-grade" class="content-section">
+                    <div class="section-header">
+                        <h3>1.6 Citing Core GRADE</h3>
+                    </div>
+                    <div class="content-article">
+                        <p>When you are using Core GRADE for your reviews, guidelines, or health technology assessments, though your access was through the website, we would appreciate your citing the original GRADE papers from the BMJ from which the material you have used came. The citations follow:</p>
+<p><span class="ref-citation" data-ref="1">1. Why Core GRADE is needed: introduction to a new series in The BMJ</span></p>
+<div class="ref-popup" id="ref-popup-1">
+<div class="ref-popup-header">Why Core GRADE is needed: introduction to a new series in The BMJ</div>
+<div class="ref-popup-body">
+<div class="ref-popup-authors">Guyatt G, Hultcrantz M, Agoritsas T, Iorio A, Vandvik PO, Montori VM</div>
+<div class="ref-popup-journal"><em>BMJ</em>. 2025 Apr 15;389:e081902</div>
+<div class="ref-popup-links">
+<a href="https://doi.org/10.1136/bmj-2024-081902" target="_blank" class="ref-popup-link"><i class="fas fa-link"></i> DOI: 10.1136/bmj-2024-081902</a>
+<a href="https://pubmed.ncbi.nlm.nih.gov/40233981" target="_blank" class="ref-popup-link"><i class="fas fa-external-link-alt"></i> PMID: 40233981</a>
+<a href="https://www.bmj.com/content/389/bmj-2024-081902.long" target="_blank" class="ref-popup-link"><i class="fas fa-file-alt"></i> BMJ Article</a>
+<a href="RIS文件/1.ris" download class="ref-popup-link"><i class="fas fa-download"></i> Download RIS</a>
+</div>
+</div></div>
+<p><span class="ref-citation" data-ref="2">2. Core GRADE 1: overview of the Core GRADE approach</span></p>
+<div class="ref-popup" id="ref-popup-2">
+<div class="ref-popup-header">Core GRADE 1: overview of the Core GRADE approach</div>
+<div class="ref-popup-body">
+<div class="ref-popup-authors">Guyatt G, Agoritsas T, Brignardello-Petersen R, Mustafa RA, Rylance J, Foroutan F, Prasad M, Agarwal A, De Beer H, Murad MH, Schandelmaier S, Iorio A, Yao L, Jaeschke R, Vandvik PO, Zeng L, Parpia S, D&#x27;Souza R, Rind D, Chu DK, Eachempati P, Prasad K, Hultcrantz M, Montori VM</div>
+<div class="ref-popup-journal"><em>BMJ</em>. 2025 Apr 22;389:e081903</div>
+<div class="ref-popup-links">
+<a href="https://doi.org/10.1136/bmj-2024-081903" target="_blank" class="ref-popup-link"><i class="fas fa-link"></i> DOI: 10.1136/bmj-2024-081903</a>
+<a href="https://pubmed.ncbi.nlm.nih.gov/40262844" target="_blank" class="ref-popup-link"><i class="fas fa-external-link-alt"></i> PMID: 40262844</a>
+<a href="https://www.bmj.com/content/389/bmj-2024-081903.long" target="_blank" class="ref-popup-link"><i class="fas fa-file-alt"></i> BMJ Article</a>
+<a href="RIS文件/2.ris" download class="ref-popup-link"><i class="fas fa-download"></i> Download RIS</a>
+</div>
+</div></div>
+<p><span class="ref-citation" data-ref="3">3. Core GRADE 2: choosing the target of certainty rating and assessing imprecision</span></p>
+<div class="ref-popup" id="ref-popup-3">
+<div class="ref-popup-header">Core GRADE 2: choosing the target of certainty rating and assessing imprecision</div>
+<div class="ref-popup-body">
+<div class="ref-popup-authors">Guyatt G, Zeng L, Brignardello-Petersen R, Prasad M, De Beer H, Murad MH, Iorio A, Agarwal A, Yao L, Agoritsas T, Rylance J, Mustafa RA, Vandvik PO, Eachempati P, Zhai C, Zhang L, Montori VM, Hultcrantz M</div>
+<div class="ref-popup-journal"><em>BMJ</em>. 2025 Apr 29;389:e081904</div>
+<div class="ref-popup-links">
+<a href="https://doi.org/10.1136/bmj-2024-081904" target="_blank" class="ref-popup-link"><i class="fas fa-link"></i> DOI: 10.1136/bmj-2024-081904</a>
+<a href="https://pubmed.ncbi.nlm.nih.gov/40300802" target="_blank" class="ref-popup-link"><i class="fas fa-external-link-alt"></i> PMID: 40300802</a>
+<a href="https://www.bmj.com/content/389/bmj-2024-081904.long" target="_blank" class="ref-popup-link"><i class="fas fa-file-alt"></i> BMJ Article</a>
+<a href="RIS文件/3.ris" download class="ref-popup-link"><i class="fas fa-download"></i> Download RIS</a>
+</div>
+</div></div>
+<p><span class="ref-citation" data-ref="4">4. Core GRADE 3: rating certainty of evidence-assessing inconsistency</span></p>
+<div class="ref-popup" id="ref-popup-4">
+<div class="ref-popup-header">Core GRADE 3: rating certainty of evidence-assessing inconsistency</div>
+<div class="ref-popup-body">
+<div class="ref-popup-authors">Guyatt G, Schandelmaier S, Brignardello-Petersen R, De Beer H, Prasad M, Murad MH, Eachempati P, Chu DK, D&#x27;Souza R, Iorio A, Agoritsas T, Yao L, Mustafa RA, Parpia S, Santaguida P, Vandvik PO, Hultcrantz M, Montori VM</div>
+<div class="ref-popup-journal"><em>BMJ</em>. 2025 May 6;389:e081905</div>
+<div class="ref-popup-links">
+<a href="https://doi.org/10.1136/bmj-2024-081905" target="_blank" class="ref-popup-link"><i class="fas fa-link"></i> DOI: 10.1136/bmj-2024-081905</a>
+<a href="https://pubmed.ncbi.nlm.nih.gov/40328467" target="_blank" class="ref-popup-link"><i class="fas fa-external-link-alt"></i> PMID: 40328467</a>
+<a href="https://www.bmj.com/content/389/bmj-2024-081905.long" target="_blank" class="ref-popup-link"><i class="fas fa-file-alt"></i> BMJ Article</a>
+<a href="RIS文件/4.ris" download class="ref-popup-link"><i class="fas fa-download"></i> Download RIS</a>
+</div>
+</div></div>
+<p><span class="ref-citation" data-ref="5">5. Core GRADE 4: rating certainty of evidence-risk of bias, publication bias, and reasons for rating up certainty</span></p>
+<div class="ref-popup" id="ref-popup-5">
+<div class="ref-popup-header">Core GRADE 4: rating certainty of evidence-risk of bias, publication bias, and reasons for rating up certainty</div>
+<div class="ref-popup-body">
+<div class="ref-popup-authors">Guyatt G, Wang Y, Eachempati P, Iorio A, Murad MH, Hultcrantz M, Chu DK, Florez ID, Hemkens LG, Agoritsas T, Yao L, Vandvik PO, Montori VM, Brignardello-Petersen R</div>
+<div class="ref-popup-journal"><em>BMJ</em>. 2025 May 13;389:e083864</div>
+<div class="ref-popup-links">
+<a href="https://doi.org/10.1136/bmj-2024-083864" target="_blank" class="ref-popup-link"><i class="fas fa-link"></i> DOI: 10.1136/bmj-2024-083864</a>
+<a href="https://pubmed.ncbi.nlm.nih.gov/40360206" target="_blank" class="ref-popup-link"><i class="fas fa-external-link-alt"></i> PMID: 40360206</a>
+<a href="https://www.bmj.com/content/389/bmj-2024-083864.long" target="_blank" class="ref-popup-link"><i class="fas fa-file-alt"></i> BMJ Article</a>
+<a href="RIS文件/5.ris" download class="ref-popup-link"><i class="fas fa-download"></i> Download RIS</a>
+</div>
+</div></div>
+<p><span class="ref-citation" data-ref="6">6. Core GRADE 5: rating certainty of evidence-assessing indirectness</span></p>
+<div class="ref-popup" id="ref-popup-6">
+<div class="ref-popup-header">Core GRADE 5: rating certainty of evidence-assessing indirectness</div>
+<div class="ref-popup-body">
+<div class="ref-popup-authors">Guyatt G, Iorio A, De Beer H, Owen A, Agoritsas T, Murad MH, Karthikeyan G, Cuello C, Prasad M, Kim K, Ali DS, Agarwal A, Hemkens LG, Yao L, Hultcrantz M, Rylance J, Chu DK, Vandvik PO, Djulbegovic B, Mustafa RA, Zeng L, Eachempati P, Rochwerg B, Prasad K, Montori VM, Brignardello-Petersen R</div>
+<div class="ref-popup-journal"><em>BMJ</em>. 2025 May 20;389:e083865</div>
+<div class="ref-popup-links">
+<a href="https://doi.org/10.1136/bmj-2024-083865" target="_blank" class="ref-popup-link"><i class="fas fa-link"></i> DOI: 10.1136/bmj-2024-083865</a>
+<a href="https://pubmed.ncbi.nlm.nih.gov/40393729" target="_blank" class="ref-popup-link"><i class="fas fa-external-link-alt"></i> PMID: 40393729</a>
+<a href="https://www.bmj.com/content/389/bmj-2024-083865.long" target="_blank" class="ref-popup-link"><i class="fas fa-file-alt"></i> BMJ Article</a>
+<a href="RIS文件/6.ris" download class="ref-popup-link"><i class="fas fa-download"></i> Download RIS</a>
+</div>
+</div></div>
+<p><span class="ref-citation" data-ref="7">7. Core GRADE 6: presenting the evidence in summary of findings tables</span></p>
+<div class="ref-popup" id="ref-popup-7">
+<div class="ref-popup-header">Core GRADE 6: presenting the evidence in summary of findings tables</div>
+<div class="ref-popup-body">
+<div class="ref-popup-authors">Guyatt G, Yao L, Murad MH, Hultcrantz M, Agoritsas T, De Beer H, Schandelmaier S, Iorio A, Zeng L, Prasad M, Vandvik PO, Mustafa RA, Agarwal A, Devji T, Florez ID, Djulbegovic B, Chu DK, Rochwerg B, Montori VM, Brignardello-Petersen R</div>
+<div class="ref-popup-journal"><em>BMJ</em>. 2025 May 27;389:e083866</div>
+<div class="ref-popup-links">
+<a href="https://doi.org/10.1136/bmj-2024-083866" target="_blank" class="ref-popup-link"><i class="fas fa-link"></i> DOI: 10.1136/bmj-2024-083866</a>
+<a href="https://pubmed.ncbi.nlm.nih.gov/40425239" target="_blank" class="ref-popup-link"><i class="fas fa-external-link-alt"></i> PMID: 40425239</a>
+<a href="https://www.bmj.com/content/389/bmj-2024-083866.long" target="_blank" class="ref-popup-link"><i class="fas fa-file-alt"></i> BMJ Article</a>
+<a href="RIS文件/7.ris" download class="ref-popup-link"><i class="fas fa-download"></i> Download RIS</a>
+</div>
+</div></div>
+<p><span class="ref-citation" data-ref="8">8. Core GRADE 7: principles for moving from evidence to recommendations and decisions</span></p>
+<div class="ref-popup" id="ref-popup-8">
+<div class="ref-popup-header">Core GRADE 7: principles for moving from evidence to recommendations and decisions</div>
+<div class="ref-popup-body">
+<div class="ref-popup-authors">Guyatt G, Vandvik PO, Iorio A, Agarwal A, Yao L, Eachempati P, Zeng L, Chu DK, D&#x27;Souza R, Agoritsas T, Murad MH, Schandelmaier S, Rylance J, Djulbegovic B, Montori VM, Hultcrantz M, Brignardello-Petersen R</div>
+<div class="ref-popup-journal"><em>BMJ</em>. 2025 Jun 3;389:e083867</div>
+<div class="ref-popup-links">
+<a href="https://doi.org/10.1136/bmj-2024-083867" target="_blank" class="ref-popup-link"><i class="fas fa-link"></i> DOI: 10.1136/bmj-2024-083867</a>
+<a href="https://pubmed.ncbi.nlm.nih.gov/40461180" target="_blank" class="ref-popup-link"><i class="fas fa-external-link-alt"></i> PMID: 40461180</a>
+<a href="https://www.bmj.com/content/389/bmj-2024-083867" target="_blank" class="ref-popup-link"><i class="fas fa-file-alt"></i> BMJ Article</a>
+<a href="RIS文件/8.ris" download class="ref-popup-link"><i class="fas fa-download"></i> Download RIS</a>
+</div>
+</div></div>
+                    </div>
+                </section></section></section></section>
+
+                <section id="intro-contributors" class="content-section">
+                    <div class="section-header">
+                        <h3>1.7 Contributors</h3>
+                    </div>
+                    <div class="content-article">
+                        <p>Project oversight: Gordon Guyatt, Thomas Agoritsas Platform programming and Design: Liam Yao, Kaitlynn Kemp, Mingming Wang, Ming Liu Leticia Kawano-Dourado  JUDGE and associated videos: Prashanti Eachempati  ROBUST-RCT: Ying Wang Core GRADE Authors: You can find the authors of each of the articles presented  on this website, in the BMJ series.  Authors making substantive contributions to the revisions in the website include: Thomas Agoritsas, Linan Zeng, Prashanti Eachempati, Dalal Ali, Hassan Murad, Sheri Keitz, Stefan Schandelmaier, Ariel Izcovich, Lars Hemkens, Monica Hultcrantz, Romina Brignardello, Luis Colunga, Liam Yao, Alfonso Iorio, Reem Mustafa, Ying Wang Other Core GRADE authors include Victor Montori, Per Vandvik, Arnav Agarwal, Derek Chu, Rohan D’Souza, Stefan Schandelmaier, Jamie Rylance, Benjamin Djulbegovic, Farid Foroutan, Manya Prasad, Hans de Beer, Roman Jaeschke, Sameer Parpia, Kameshwar Prasad, Andrew Owen, Ganesan Karthikeyan, Carlos Coello, Kevin Kim, Bram Rochwerg, Chunjuan Zhai, Lingli Zhang, Pasqualina Santaguida, Tahira Devji, Ivan Florez</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        
+
+        <div class="resize-handle" id="rightResizeHandle"></div>
+
+        <aside class="right-sidebar" id="rightSidebar">
+            <div class="right-sidebar-tabs">
+                <button class="tab-btn active" data-tab="resources">Additional resources</button>
+                <button class="tab-btn" data-tab="references">References</button>
+            </div>
+            
+            <div class="tab-content active" id="resources-tab">
+                <div class="resource-section">
+                    <h4 class="resource-section-title">LINKS & VIDEOS</h4>
+                    <div class="resource-item">
+                        <a href="https://www.gradeworkinggroup.org" target="_blank" class="resource-link">
+                            <strong>GRADE Working Group</strong>
+                            <span class="resource-desc">Official website of the GRADE Working Group</span>
+                        </a>
+                    </div>
+                    <div class="resource-item">
+                        <a href="https://www.linkedin.com/company/grade-working-group" target="_blank" class="resource-link">
+                            <strong>GRADE Working Group LinkedIn</strong>
+                            <span class="resource-desc">Stay informed on GRADE news and updates</span>
+                        </a>
+                    </div>
+                    <div class="resource-item">
+                        <a href="https://gdt.gradepro.org" target="_blank" class="resource-link">
+                            <strong>GRADEpro GDT</strong>
+                            <span class="resource-desc">Guideline Development Tool for creating Summary of Findings tables</span>
+                        </a>
+                    </div>
+                    <div class="resource-item">
+                        <a href="https://book.gradepro.org" target="_blank" class="resource-link">
+                            <strong>GRADE Book</strong>
+                            <span class="resource-desc">Comprehensive resource on the GRADE approach</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="references-tab">
+                <div class="reference-section">
+                    <h4 class="resource-section-title">KEY REFERENCES</h4>
+                    <div class="reference-item">
+                        <p class="reference-text">Guyatt G, Oxman AD, Akl EA, et al. GRADE guidelines: 1. Introduction-GRADE evidence profiles and summary of findings tables. J Clin Epidemiol. 2011;64(4):383-394.</p>
+                    </div>
+                    <div class="reference-item">
+                        <p class="reference-text">Guyatt GH, Oxman AD, Vist GE, et al. GRADE: an emerging consensus on rating quality of evidence and strength of recommendations. BMJ. 2008;336(7650):924-926.</p>
+                    </div>
+                    <div class="reference-item">
+                        <p class="reference-text">Balshem H, Helfand M, Schünemann HJ, et al. GRADE guidelines: 3. Rating the quality of evidence. J Clin Epidemiol. 2011;64(4):401-406.</p>
+                    </div>
+                    <div class="reference-item">
+                        <p class="reference-text">Andrews J, Guyatt G, Oxman AD, et al. GRADE guidelines: 15. Going from evidence to recommendations-determinants of a recommendation's direction and strength. J Clin Epidemiol. 2013;66(7):721-735.</p>
+                    </div>
+                    <div class="reference-item">
+                        <p class="reference-text">Schünemann HJ, Al-Ansari A, Akl EA, et al. A GRADE Working Group approach for rating the quality of test accuracy studies. BMJ. 2016;355:i5062.</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="resize-handle" id="rightResizeHandle"></div>
+
+        <aside class="right-sidebar" id="rightSidebar">
+            <div class="right-sidebar-tabs">
+                <button class="tab-btn active" data-tab="resources">Additional resources</button>
+                <button class="tab-btn" data-tab="references">References</button>
+            </div>
+            <div class="tab-content active" id="resources-tab">
+                <div class="resource-section">
+                    <h4 class="resource-section-title">RELATED CORE GRADE SECTIONS</h4>
+                    <ul class="resource-links">
+                        <li><a href="#">2: Overview of Core GRADE</a></li>
+                        <li><a href="#">3: Planning the Systematic Review</a></li>
+                        <li><a href="#">4: GRADE's Rating of Certainty of Evidence</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content" id="references-tab">
+                <div class="reference-section">
+                    <h4 class="resource-section-title">KEY REFERENCES</h4>
+                    <div class="reference-item">
+                        <p class="reference-text">Guyatt G, Oxman AD, Akl EA, et al. GRADE guidelines: 1. Introduction-GRADE evidence profiles and summary of findings tables. J Clin Epidemiol. 2011;64(4):383-394.</p>
+                    </div>
+                    <div class="reference-item">
+                        <p class="reference-text">Guyatt GH, Oxman AD, Vist GE, et al. GRADE: an emerging consensus on rating quality of evidence and strength of recommendations. BMJ. 2008;336(7650):924-926.</p>
+                    </div>
+                    <div class="reference-item">
+                        <p class="reference-text">Balshem H, Helfand M, Schünemann HJ, et al. GRADE guidelines: 3. Rating the quality of evidence. J Clin Epidemiol. 2011;64(4):401-406.</p>
+                    </div>
+                    <div class="reference-item">
+                        <p class="reference-text">Andrews J, Guyatt G, Oxman AD, et al. GRADE guidelines: 15. Going from evidence to recommendations-determinants of a recommendation's direction and strength. J Clin Epidemiol. 2013;66(7):721-735.</p>
+                    </div>
+                    <div class="reference-item">
+                        <p class="reference-text">Schünemann HJ, Al-Ansari A, Akl EA, et al. A GRADE Working Group approach for rating the quality of test accuracy studies. BMJ. 2016;355:i5062.</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</main>
+
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-panel">
+            <div class="search-panel-header">
+                <div class="search-input-wrapper">
+                    <i class="fas fa-search"></i>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search..." autocomplete="off">
+                    <button class="search-clear" id="searchClear" aria-label="Clear search">&times;</button>
+                </div>
+                <button class="search-close" id="searchClose" aria-label="Close search">&times;</button>
+            </div>
+            <div class="search-panel-body">
+                <div class="search-info" id="searchInfo"></div>
+                <div class="search-results" id="searchResults"></div>
+            </div>
+            <div class="search-nav" id="searchNav">
+                <button class="search-nav-btn" id="searchPrev" disabled><i class="fas fa-chevron-up"></i> Previous</button>
+                <span class="search-nav-count" id="searchNavCount"></span>
+                <button class="search-nav-btn" id="searchNext" disabled>Next <i class="fas fa-chevron-down"></i></button>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="https://linkedin.com/in/guyattgh/" target="_blank" class="footer-link footer-link-icon" title="LinkedIn: linkedin.com/in/guyattgh">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://x.com/GuyattGH" target="_blank" class="footer-link footer-link-icon" title="X: @GuyattGH">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="https://bsky.app/profile/guyattgh.bsky.social" target="_blank" class="footer-link footer-link-icon" title="Bluesky: @guyattgh.bsky.social">
+                    <i class="fas fa-cloud"></i>
+                </a>
+                <a href="mailto:guyatt@mcmaster.ca" class="footer-link footer-link-icon" title="Email: guyatt@mcmaster.ca">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
