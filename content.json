@@ -1,0 +1,35 @@
+{
+  "version": 3,
+  "pages": [
+    {
+      "path": "index.html",
+      "label": "Home",
+      "settings": {},
+      "sections": []
+    },
+    {
+      "path": "chapter1.html",
+      "label": "Chapter 1",
+      "settings": {},
+      "sections": []
+    },
+    {
+      "path": "chapter2.html",
+      "label": "Chapter 2",
+      "settings": {},
+      "sections": []
+    },
+    {
+      "path": "chapter3.html",
+      "label": "Chapter 3",
+      "settings": {},
+      "sections": []
+    },
+    {
+      "path": "chapter4.html",
+      "label": "Chapter 4",
+      "settings": {},
+      "sections": []
+    }
+  ]
+}

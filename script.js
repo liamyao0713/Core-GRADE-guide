@@ -4,6 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+    const startInteractiveFeatures = function() {
     // Initialize collapsible navigation
     initCollapsibleNav();
 
@@ -60,6 +61,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Default to Collapse All state
     collapseAll();
+    };
+
+    if (window.coreGradeContentReady && typeof window.coreGradeContentReady.then === 'function') {
+        window.coreGradeContentReady.then(startInteractiveFeatures);
+    } else {
+        startInteractiveFeatures();
+    }
 });
 
 /**

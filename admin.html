@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core GRADE Content Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-50: #fdf2f4;
+            --primary-200: #f9d0d9;
+            --primary-700: #990F2E;
+            --primary-900: #5c091b;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-900: #111827;
+            --success: #047857;
+            --danger: #b91c1c;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--gray-900);
+            background: var(--gray-50);
+        }
+
+        .admin-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            display: grid;
+            grid-template-columns: minmax(190px, auto) 1fr auto;
+            gap: 16px;
+            align-items: center;
+            padding: 16px 24px;
+            color: #fff;
+            background: linear-gradient(135deg, #3d0612 0%, var(--primary-900) 100%);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+        }
+
+        .admin-title {
+            margin: 0;
+            font-size: 1.05rem;
+            line-height: 1.2;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .search-box input {
+            width: 100%;
+            min-height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            border-radius: 6px;
+            padding: 9px 12px 9px 34px;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            font: inherit;
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .admin-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            min-height: 38px;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-weight: 700;
+            font-size: 0.86rem;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            color: var(--primary-900);
+            background: #fff;
+        }
+
+        .btn-secondary {
+            color: var(--gray-900);
+            background: #fff;
+            border-color: var(--gray-300);
+        }
+
+        .admin-main {
+            display: grid;
+            grid-template-columns: 260px minmax(0, 1fr);
+            min-height: calc(100vh - 72px);
+        }
+
+        .page-sidebar {
+            background: #fff;
+            border-right: 1px solid var(--gray-200);
+            padding: 16px;
+        }
+
+        .page-tab {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            background: transparent;
+            color: var(--gray-700);
+            cursor: pointer;
+            text-align: left;
+            font-weight: 700;
+        }
+
+        .page-tab.active {
+            border-color: var(--primary-200);
+            background: var(--primary-50);
+            color: var(--primary-700);
+        }
+
+        .page-count {
+            color: var(--gray-500);
+            font-size: 0.78rem;
+        }
+
+        .editor {
+            padding: 18px;
+        }
+
+        .status-row {
+            min-height: 24px;
+            margin-bottom: 12px;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        .status-row.success {
+            color: var(--success);
+        }
+
+        .status-row.error {
+            color: var(--danger);
+        }
+
+        .page-heading {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+
+        .page-heading h2 {
+            margin: 0;
+            font-size: 1.25rem;
+        }
+
+        .section-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .section-card {
+            background: #fff;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+        }
+
+        .section-card.hidden {
+            display: none;
+        }
+
+        .section-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 14px;
+            background: var(--gray-100);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .section-name {
+            min-width: 0;
+            font-weight: 700;
+            color: var(--gray-900);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .section-type {
+            flex: 0 0 auto;
+            border-radius: 999px;
+            padding: 3px 8px;
+            color: var(--primary-700);
+            background: #fff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .section-body {
+            padding: 14px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--gray-700);
+            font-size: 0.84rem;
+            font-weight: 700;
+        }
+
+        input[type="text"],
+        textarea,
+        .rich-editor {
+            width: 100%;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            padding: 10px 11px;
+            font: inherit;
+            color: var(--gray-900);
+            background: #fff;
+        }
+
+        textarea {
+            min-height: 90px;
+            resize: vertical;
+            line-height: 1.45;
+        }
+
+        .rich-editor {
+            min-height: 170px;
+            max-height: 460px;
+            overflow: auto;
+            line-height: 1.55;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus,
+        .rich-editor:focus {
+            outline: 2px solid rgba(153, 15, 46, 0.18);
+            border-color: var(--primary-700);
+        }
+
+        .rich-editor p {
+            margin: 0 0 0.85em;
+        }
+
+        .rich-editor img,
+        .rich-editor video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .hint {
+            margin-top: 6px;
+            color: var(--gray-500);
+            font-size: 0.78rem;
+        }
+
+        .empty-state {
+            border: 1px dashed var(--gray-300);
+            border-radius: 8px;
+            padding: 28px;
+            color: var(--gray-600);
+            background: #fff;
+            text-align: center;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        @media (max-width: 960px) {
+            .admin-header {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-actions {
+                justify-content: flex-start;
+            }
+
+            .admin-main {
+                grid-template-columns: 1fr;
+            }
+
+            .page-sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--gray-200);
+                display: flex;
+                gap: 8px;
+                overflow-x: auto;
+            }
+
+            .page-tab {
+                min-width: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="admin-header">
+        <h1 class="admin-title">Core GRADE Content Admin</h1>
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input id="searchInput" type="search" placeholder="Search title, subtitle, or body" autocomplete="off">
+        </div>
+        <div class="admin-actions">
+            <button class="btn btn-secondary" id="openFileBtn" type="button"><i class="fas fa-folder-open"></i> Open</button>
+            <button class="btn btn-secondary" id="rescanBtn" type="button"><i class="fas fa-rotate-right"></i> Rescan</button>
+            <button class="btn btn-primary" id="saveBtn" type="button"><i class="fas fa-floppy-disk"></i> Save</button>
+            <button class="btn btn-secondary" id="exportBtn" type="button"><i class="fas fa-download"></i> Export</button>
+        </div>
+        <input class="file-input" id="fileInput" type="file" accept="application/json,.json">
+    </header>
+
+    <main class="admin-main">
+        <aside class="page-sidebar" id="pageTabs"></aside>
+        <section class="editor">
+            <div class="status-row" id="statusRow"></div>
+            <div class="page-heading">
+                <h2 id="activePageTitle">Loading</h2>
+                <span id="sectionSummary"></span>
+            </div>
+            <div class="section-list" id="sectionList"></div>
+        </section>
+    </main>
+
+    <script>
+        var PAGE_DEFS = [
+            { path: 'index.html', label: 'Home' },
+            { path: 'chapter1.html', label: 'Chapter 1' },
+            { path: 'chapter2.html', label: 'Chapter 2' },
+            { path: 'chapter3.html', label: 'Chapter 3' },
+            { path: 'chapter4.html', label: 'Chapter 4' }
+        ];
+
+        var contentState = { version: 3, pages: [] };
+        var activePagePath = 'index.html';
+        var fileHandle = null;
+
+        var els = {
+            pageTabs: document.getElementById('pageTabs'),
+            sectionList: document.getElementById('sectionList'),
+            statusRow: document.getElementById('statusRow'),
+            activePageTitle: document.getElementById('activePageTitle'),
+            sectionSummary: document.getElementById('sectionSummary'),
+            searchInput: document.getElementById('searchInput'),
+            fileInput: document.getElementById('fileInput')
+        };
+
+        function setStatus(message, type) {
+            els.statusRow.textContent = message || '';
+            els.statusRow.className = 'status-row' + (type ? ' ' + type : '');
+        }
+
+        function defaultContent() {
+            return {
+                version: 3,
+                pages: PAGE_DEFS.map(function(page) {
+                    return { path: page.path, label: page.label, settings: {}, sections: [] };
+                })
+            };
+        }
+
+        function normalizeText(value) {
+            return (value || '').replace(/\s+/g, ' ').trim();
+        }
+
+        function sectionKey(section) {
+            return section.type + '::' + section.id;
+        }
+
+        function storedPageMap(content) {
+            var map = {};
+            if (!content || !Array.isArray(content.pages)) return map;
+            content.pages.forEach(function(page) {
+                if (!page || !page.path) return;
+                var sections = {};
+                (page.sections || []).forEach(function(section) {
+                    sections[sectionKey(section)] = section;
+                });
+                map[page.path] = {
+                    settings: page.settings || {},
+                    sections: sections
+                };
+            });
+            return map;
+        }
+
+        function cleanCloneForEditing(node) {
+            var clone = node.cloneNode(true);
+            clone.querySelectorAll('script, style, template, noscript').forEach(function(el) {
+                el.remove();
+            });
+            clone.querySelectorAll('.content-collapse-btn, .chapter-collapse-btn, .sub-chapter-collapse-btn, .nav-collapse-btn').forEach(function(el) {
+                el.remove();
+            });
+            return clone;
+        }
+
+        function sectionTitleFrom(section) {
+            var heading = section.querySelector('.section-header h2, .section-header h3, .section-header h4');
+            return heading ? normalizeText(heading.textContent) : 'Untitled section';
+        }
+
+        function scanPage(pageDef, html, stored) {
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(html, 'text/html');
+            var storedPage = stored[pageDef.path] || { settings: {}, sections: {} };
+            var settings = {
+                documentTitle: storedPage.settings.documentTitle || doc.title || '',
+                logoText: storedPage.settings.logoText || normalizeText((doc.querySelector('.logo span') || {}).textContent),
+                pageTitle: storedPage.settings.pageTitle || normalizeText((doc.querySelector('.page-title h1') || {}).textContent)
+            };
+            var sections = [];
+
+            doc.querySelectorAll('.chapter-container[id]').forEach(function(chapter) {
+                var heading = chapter.querySelector('.chapter-header h2');
+                if (!heading) return;
+                var section = {
+                    type: 'chapter',
+                    id: chapter.id,
+                    label: normalizeText(heading.textContent),
+                    title: normalizeText(heading.textContent)
+                };
+                var saved = storedPage.sections[sectionKey(section)];
+                if (saved) section.title = saved.title || section.title;
+                sections.push(section);
+            });
+
+            doc.querySelectorAll('.content-section[id]').forEach(function(contentSection) {
+                var article = contentSection.querySelector('.content-article');
+                var bodyHtml = article ? cleanCloneForEditing(article).innerHTML.trim() : '';
+                var section = {
+                    type: 'content',
+                    id: contentSection.id,
+                    label: sectionTitleFrom(contentSection),
+                    title: sectionTitleFrom(contentSection),
+                    bodyHtml: bodyHtml
+                };
+                var saved = storedPage.sections[sectionKey(section)];
+                if (saved) {
+                    section.title = saved.title || section.title;
+                    if (typeof saved.bodyHtml === 'string') section.bodyHtml = saved.bodyHtml;
+                }
+                sections.push(section);
+            });
+
+            return {
+                path: pageDef.path,
+                label: pageDef.label,
+                settings: settings,
+                sections: sections
+            };
+        }
+
+        async function readContentJson() {
+            try {
+                var response = await fetch('content.json', { cache: 'no-store' });
+                if (!response.ok) return defaultContent();
+                var content = await response.json();
+                if (content && content.version === 3 && Array.isArray(content.pages)) return content;
+                return defaultContent();
+            } catch (error) {
+                return defaultContent();
+            }
+        }
+
+        async function scanSite(storedContent) {
+            setStatus('Scanning by title, subtitle, and body...');
+            var stored = storedPageMap(storedContent || defaultContent());
+            var pages = [];
+
+            for (var i = 0; i < PAGE_DEFS.length; i += 1) {
+                var page = PAGE_DEFS[i];
+                var response = await fetch(page.path, { cache: 'no-store' });
+                if (!response.ok) throw new Error('Unable to load ' + page.path);
+                pages.push(scanPage(page, await response.text(), stored));
+            }
+
+            contentState = { version: 3, updatedAt: new Date().toISOString(), pages: pages };
+            render();
+            setStatus('Content loaded by page title, chapter title, subtitle, and body.', 'success');
+        }
+
+        function activePage() {
+            return contentState.pages.find(function(page) {
+                return page.path === activePagePath;
+            }) || contentState.pages[0];
+        }
+
+        function renderTabs() {
+            els.pageTabs.replaceChildren();
+            contentState.pages.forEach(function(page) {
+                var button = document.createElement('button');
+                button.className = 'page-tab' + (page.path === activePagePath ? ' active' : '');
+                button.type = 'button';
+
+                var label = document.createElement('span');
+                label.textContent = page.label;
+
+                var count = document.createElement('span');
+                count.className = 'page-count';
+                count.textContent = page.sections.length;
+
+                button.append(label, count);
+                button.addEventListener('click', function() {
+                    activePagePath = page.path;
+                    render();
+                });
+                els.pageTabs.appendChild(button);
+            });
+        }
+
+        function matches(section, query) {
+            if (!query) return true;
+            var haystack = [section.label, section.title, section.bodyHtml || '', section.type, section.id].join(' ').toLowerCase();
+            return haystack.indexOf(query) !== -1;
+        }
+
+        function renderSettings(page) {
+            var card = document.createElement('section');
+            card.className = 'section-card';
+            card.dataset.search = [page.settings.documentTitle, page.settings.logoText, page.settings.pageTitle].join(' ').toLowerCase();
+
+            var header = document.createElement('div');
+            header.className = 'section-card-header';
+            header.innerHTML = '<div class="section-name">Page title</div><div class="section-type">Page</div>';
+
+            var body = document.createElement('div');
+            body.className = 'section-body';
+            [
+                ['documentTitle', 'Browser title'],
+                ['logoText', 'Logo text'],
+                ['pageTitle', 'Home page title']
+            ].forEach(function(item) {
+                var key = item[0];
+                var label = item[1];
+                if (key === 'pageTitle' && !page.settings.pageTitle) return;
+                var field = document.createElement('div');
+                field.className = 'field';
+                var inputId = 'setting-' + key;
+                field.innerHTML = '<label for="' + inputId + '">' + label + '</label>';
+                var input = document.createElement('input');
+                input.type = 'text';
+                input.id = inputId;
+                input.value = page.settings[key] || '';
+                input.addEventListener('input', function() {
+                    page.settings[key] = input.value;
+                    contentState.updatedAt = new Date().toISOString();
+                });
+                field.appendChild(input);
+                body.appendChild(field);
+            });
+
+            card.append(header, body);
+            els.sectionList.appendChild(card);
+        }
+
+        function renderSection(section) {
+            var card = document.createElement('section');
+            card.className = 'section-card';
+            card.dataset.search = [section.label, section.title, section.bodyHtml || '', section.id].join(' ').toLowerCase();
+
+            var header = document.createElement('div');
+            header.className = 'section-card-header';
+            var name = document.createElement('div');
+            name.className = 'section-name';
+            name.textContent = section.label || section.title || section.id;
+            var type = document.createElement('div');
+            type.className = 'section-type';
+            type.textContent = section.type === 'chapter' ? 'Chapter title' : 'Subtitle + body';
+            header.append(name, type);
+
+            var body = document.createElement('div');
+            body.className = 'section-body';
+
+            var titleField = document.createElement('div');
+            titleField.className = 'field';
+            titleField.innerHTML = '<label>Title / subtitle</label>';
+            var titleInput = document.createElement('input');
+            titleInput.type = 'text';
+            titleInput.value = section.title || '';
+            titleInput.addEventListener('input', function() {
+                section.title = titleInput.value;
+                contentState.updatedAt = new Date().toISOString();
+            });
+            titleField.appendChild(titleInput);
+            body.appendChild(titleField);
+
+            if (section.type === 'content') {
+                var bodyField = document.createElement('div');
+                bodyField.className = 'field';
+                bodyField.innerHTML = '<label>Body content</label>';
+                var editor = document.createElement('div');
+                editor.className = 'rich-editor';
+                editor.contentEditable = 'true';
+                editor.innerHTML = section.bodyHtml || '';
+                editor.addEventListener('input', function() {
+                    section.bodyHtml = editor.innerHTML;
+                    contentState.updatedAt = new Date().toISOString();
+                });
+                var hint = document.createElement('div');
+                hint.className = 'hint';
+                hint.textContent = 'Edit text directly. If the body contains links, images, or lists, preserve the existing formatting where possible.';
+                bodyField.append(editor, hint);
+                body.appendChild(bodyField);
+            }
+
+            card.append(header, body);
+            els.sectionList.appendChild(card);
+        }
+
+        function renderSections() {
+            var page = activePage();
+            if (!page) return;
+            var query = els.searchInput.value.trim().toLowerCase();
+            var sections = page.sections.filter(function(section) {
+                return matches(section, query);
+            });
+
+            els.activePageTitle.textContent = page.label + ' content';
+            els.sectionSummary.textContent = sections.length + ' of ' + page.sections.length + ' sections';
+            els.sectionList.replaceChildren();
+
+            if (!query || [page.settings.documentTitle, page.settings.logoText, page.settings.pageTitle].join(' ').toLowerCase().indexOf(query) !== -1) {
+                renderSettings(page);
+            }
+
+            if (!sections.length) {
+                var empty = document.createElement('div');
+                empty.className = 'empty-state';
+                empty.textContent = 'No matching sections.';
+                els.sectionList.appendChild(empty);
+                return;
+            }
+
+            sections.forEach(renderSection);
+        }
+
+        function render() {
+            if (!activePage() && contentState.pages.length) activePagePath = contentState.pages[0].path;
+            renderTabs();
+            renderSections();
+        }
+
+        function serializeContent() {
+            contentState.updatedAt = new Date().toISOString();
+            return JSON.stringify(contentState, null, 2) + '\n';
+        }
+
+        function downloadContent() {
+            var blob = new Blob([serializeContent()], { type: 'application/json' });
+            var url = URL.createObjectURL(blob);
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = 'content.json';
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            URL.revokeObjectURL(url);
+            setStatus('content.json exported.', 'success');
+        }
+
+        async function saveContent() {
+            var content = serializeContent();
+            if (fileHandle && fileHandle.createWritable) {
+                try {
+                    var writable = await fileHandle.createWritable();
+                    await writable.write(content);
+                    await writable.close();
+                    setStatus('content.json saved.', 'success');
+                    return;
+                } catch (error) {
+                    setStatus('Save failed. Export a copy instead.', 'error');
+                    return;
+                }
+            }
+
+            if (window.showSaveFilePicker) {
+                try {
+                    fileHandle = await window.showSaveFilePicker({
+                        suggestedName: 'content.json',
+                        types: [{
+                            description: 'JSON',
+                            accept: { 'application/json': ['.json'] }
+                        }]
+                    });
+                    await saveContent();
+                    return;
+                } catch (error) {
+                    if (error.name !== 'AbortError') setStatus('Save failed. Export a copy instead.', 'error');
+                    return;
+                }
+            }
+
+            downloadContent();
+        }
+
+        async function openContentFile() {
+            if (window.showOpenFilePicker) {
+                try {
+                    var handles = await window.showOpenFilePicker({
+                        multiple: false,
+                        types: [{
+                            description: 'JSON',
+                            accept: { 'application/json': ['.json'] }
+                        }]
+                    });
+                    fileHandle = handles[0];
+                    var file = await fileHandle.getFile();
+                    await scanSite(JSON.parse(await file.text()));
+                    setStatus(file.name + ' opened.', 'success');
+                    return;
+                } catch (error) {
+                    if (error.name !== 'AbortError') setStatus('File was not opened.', 'error');
+                    return;
+                }
+            }
+            els.fileInput.click();
+        }
+
+        els.fileInput.addEventListener('change', async function(event) {
+            var file = event.target.files[0];
+            if (!file) return;
+            try {
+                fileHandle = null;
+                await scanSite(JSON.parse(await file.text()));
+                setStatus(file.name + ' opened.', 'success');
+            } catch (error) {
+                setStatus('Invalid JSON file.', 'error');
+            }
+        });
+
+        document.getElementById('openFileBtn').addEventListener('click', openContentFile);
+        document.getElementById('rescanBtn').addEventListener('click', function() {
+            scanSite(contentState).catch(function(error) {
+                setStatus(error.message, 'error');
+            });
+        });
+        document.getElementById('saveBtn').addEventListener('click', saveContent);
+        document.getElementById('exportBtn').addEventListener('click', downloadContent);
+        els.searchInput.addEventListener('input', renderSections);
+
+        readContentJson()
+            .then(scanSite)
+            .catch(function(error) {
+                setStatus(error.message, 'error');
+            });
+    </script>
+</body>
+</html>
