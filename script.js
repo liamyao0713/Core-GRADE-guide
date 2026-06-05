@@ -61,6 +61,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Default to Collapse All state
     collapseAll();
+
+    if (window.location.hash) {
+        window.setTimeout(function() {
+            scrollToHashTarget(window.location.hash, null, false, false);
+        }, 0);
+    }
+
+    window.addEventListener('hashchange', function() {
+        if (window.location.hash) {
+            scrollToHashTarget(window.location.hash, null, false, false);
+        }
+    });
     };
 
     if (window.coreGradeContentReady && typeof window.coreGradeContentReady.then === 'function') {
@@ -480,7 +492,7 @@ function initScrollSpy() {
     
     const observerOptions = {
         root: null,
-        rootMargin: '-20% 0px -60% 0px',
+        rootMargin: '-45% 0px -45% 0px',
         threshold: 0
     };
     
@@ -489,22 +501,12 @@ function initScrollSpy() {
             if (entry.isIntersecting) {
                 const id = entry.target.getAttribute('id');
                 
-                // Remove all active classes
-                navLinks.forEach(link => link.classList.remove('active'));
-                
-                // Add active class to corresponding link
-                const activeLink = document.querySelector(`.sidebar-link[href="#${id}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                    
-                    // Scroll to active link in sidebar
-                    const sidebar = document.getElementById('sidebar');
-                    if (sidebar) {
-                        const linkTop = activeLink.offsetTop;
-                        const sidebarHeight = sidebar.clientHeight;
-                        sidebar.scrollTop = Math.max(0, linkTop - sidebarHeight / 3);
-                    }
+                let activeTargetId = `#${id}`;
+                if (id === 'appendix-list' && window.location.hash && window.location.hash.startsWith('#appendix-')) {
+                    activeTargetId = window.location.hash;
                 }
+
+                setActiveSidebarLink(activeTargetId, false);
             }
         });
     }, observerOptions);
@@ -520,97 +522,187 @@ function initSmoothScroll() {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
-            const target = document.querySelector(targetId);
-            if (target) {
+
+            if (findHashTarget(targetId)) {
                 e.preventDefault();
-                
-                // Check if target is a level 2 heading or level 3 heading
-                const h3 = target.querySelector('h3');
-                let targetSection = target;
-                
-                // If it's a level 3 heading, find its parent level 2 heading section
-                if (h3 && !/^\d+\.\d+\s/.test(h3.textContent)) {
-                    // Find the previous level 2 heading section
-                    let prevSibling = target.previousElementSibling;
-                    while (prevSibling) {
-                        const prevH3 = prevSibling.querySelector('h3');
-                        if (prevH3 && /^\d+\.\d+\s/.test(prevH3.textContent)) {
-                            targetSection = prevSibling;
-                            break;
-                        }
-                        prevSibling = prevSibling.previousElementSibling;
-                    }
-                }
-                
-                // Expand the target section (level 2 heading)
-                const btn = targetSection.querySelector('.content-collapse-btn');
-                if (btn) {
-                    // Find sibling sections for this level 2 heading
-                    const siblingSections = [];
-                    let nextSibling = targetSection.nextElementSibling;
-                    while (nextSibling) {
-                        const nextH3 = nextSibling.querySelector('h3');
-                        if (nextH3 && /^\d+\.\d+\s/.test(nextH3.textContent)) {
-                            break;
-                        }
-                        siblingSections.push(nextSibling);
-                        nextSibling = nextSibling.nextElementSibling;
-                    }
-                    
-                    // Force expand the level 2 section
-                    const level2Article = targetSection.querySelector('.content-article');
-                    if (level2Article) {
-                        level2Article.classList.remove('collapsed');
-                    }
-                    
-                    // Show all sibling sections (level 3 headings)
-                    siblingSections.forEach(sibling => {
-                        sibling.style.display = 'block';
-                        const siblingArticle = sibling.querySelector('.content-article');
-                        if (siblingArticle) {
-                            siblingArticle.classList.remove('collapsed');
-                        }
-                    });
-                    
-                    btn.classList.remove('collapsed');
-                    btn.innerHTML = '<i class="fas fa-chevron-up"></i>';
-                }
-                
-                // Expand parent nav section if collapsed
-                const parentNav = target.closest('.nav-section');
-                if (parentNav) {
-                    const navList = parentNav.querySelector('.nav-list');
-                    const btn = parentNav.querySelector('.nav-collapse-btn');
-                    if (navList && btn && navList.classList.contains('collapsed')) {
-                        toggleCollapse(navList, btn);
-                    }
-                }
-                
-                // Smooth scroll to target
-                const headerOffset = 80;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-                
-                // Update URL without scrolling
-                history.pushState(null, null, targetId);
-                
-                // Close mobile menu if open
-                const sidebar = document.getElementById('sidebar');
-                const toggle = document.getElementById('mobileMenuToggle');
-                if (sidebar && sidebar.classList.contains('open')) {
-                    sidebar.classList.remove('open');
-                    if (toggle) {
-                        toggle.querySelector('i').className = 'fas fa-bars';
-                    }
-                }
+                scrollToHashTarget(targetId, this, true, true);
             }
         });
+    });
+}
+
+function findHashTarget(targetId) {
+    const rawId = targetId.slice(1);
+    let target = document.getElementById(rawId);
+    if (!target) {
+        try {
+            target = document.querySelector(targetId);
+        } catch (e) {
+            target = null;
+        }
+    }
+    return target;
+}
+
+function revealHashTarget(target, targetId, clickedLink) {
+    let chapterContent = target.closest('.chapter-content');
+    if (!chapterContent && target.classList && target.classList.contains('chapter-container')) {
+        chapterContent = target.querySelector('.chapter-content');
+    }
+
+    if (chapterContent && chapterContent.classList.contains('collapsed')) {
+        const chapterBtn = chapterContent.parentElement.querySelector('.chapter-collapse-btn');
+        if (chapterBtn) {
+            toggleChapterCollapse(chapterContent, chapterBtn);
+        }
+    }
+
+    let targetSection = target.closest('.content-section');
+    if (targetSection) {
+        const h3 = targetSection.querySelector('.section-header h3');
+
+        if (h3 && !/^\d+\.\d+\s/.test(h3.textContent)) {
+            let prevSibling = targetSection.previousElementSibling;
+            while (prevSibling) {
+                const prevH3 = prevSibling.querySelector('.section-header h3');
+                if (prevH3 && /^\d+\.\d+\s/.test(prevH3.textContent)) {
+                    targetSection = prevSibling;
+                    break;
+                }
+                prevSibling = prevSibling.previousElementSibling;
+            }
+        }
+
+        targetSection.style.display = 'block';
+        const targetArticle = targetSection.querySelector('.content-article');
+        if (targetArticle) {
+            targetArticle.classList.remove('collapsed');
+        }
+
+        const btn = targetSection.querySelector('.content-collapse-btn');
+        if (btn) {
+            const siblingSections = [];
+            let nextSibling = targetSection.nextElementSibling;
+            while (nextSibling) {
+                const nextH3 = nextSibling.querySelector('.section-header h3');
+                if (nextH3 && /^\d+\.\d+\s/.test(nextH3.textContent)) {
+                    break;
+                }
+                siblingSections.push(nextSibling);
+                nextSibling = nextSibling.nextElementSibling;
+            }
+
+            siblingSections.forEach(sibling => {
+                sibling.style.display = 'block';
+                const siblingArticle = sibling.querySelector('.content-article');
+                if (siblingArticle) {
+                    siblingArticle.classList.remove('collapsed');
+                }
+            });
+
+            btn.classList.remove('collapsed');
+            btn.innerHTML = '<i class="fas fa-chevron-up"></i>';
+        }
+    }
+
+    let parentNav = clickedLink ? clickedLink.closest('.nav-section') : null;
+    if (!parentNav && targetId) {
+        const matchingNavLink = document.querySelector(`.sidebar-link[href="${targetId}"]`);
+        parentNav = matchingNavLink ? matchingNavLink.closest('.nav-section') : null;
+    }
+
+    if (parentNav) {
+        const navList = parentNav.querySelector('.nav-list');
+        const btn = parentNav.querySelector('.nav-collapse-btn');
+        if (navList && btn && navList.classList.contains('collapsed')) {
+            toggleCollapse(navList, btn);
+        }
+    }
+}
+
+function scrollToHashTarget(targetId, clickedLink, smooth, updateHistory) {
+    const target = findHashTarget(targetId);
+    if (!target) return false;
+
+    revealHashTarget(target, targetId, clickedLink);
+    updateAppendixHashHighlight(target);
+    setActiveSidebarLink(targetId, smooth);
+
+    const scrollFocus = getHashScrollFocus(target);
+    const focusRect = scrollFocus.getBoundingClientRect();
+    const offsetPosition = focusRect.top + window.pageYOffset - ((window.innerHeight - focusRect.height) / 2);
+
+    window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: smooth ? 'smooth' : 'auto'
+    });
+
+    if (updateHistory) {
+        history.pushState(null, null, targetId);
+    }
+
+    const sidebar = document.getElementById('sidebar');
+    const toggle = document.getElementById('mobileMenuToggle');
+    if (sidebar && sidebar.classList.contains('open')) {
+        sidebar.classList.remove('open');
+        if (toggle) {
+            toggle.querySelector('i').className = 'fas fa-bars';
+        }
+    }
+
+    return true;
+}
+
+function updateAppendixHashHighlight(target) {
+    document.querySelectorAll('.appendix-list-item.hash-highlight').forEach(item => {
+        item.classList.remove('hash-highlight');
+    });
+
+    if (target && target.classList && target.classList.contains('appendix-list-item')) {
+        target.classList.add('hash-highlight');
+    }
+}
+
+function getHashScrollFocus(target) {
+    if (target.classList && target.classList.contains('appendix-list-item')) {
+        return target;
+    }
+
+    if (target.classList && target.classList.contains('content-section')) {
+        const heading = target.querySelector('.section-header h2, .section-header h3, .section-header h4, .section-header h5, .section-header h6');
+        if (heading) return heading;
+    }
+
+    if (target.classList && target.classList.contains('chapter-container')) {
+        const heading = target.querySelector('.chapter-header h2');
+        if (heading) return heading;
+    }
+
+    return target;
+}
+
+function setActiveSidebarLink(targetId, smooth) {
+    const navLinks = document.querySelectorAll('.sidebar-link');
+    navLinks.forEach(link => link.classList.remove('active'));
+
+    const activeLink = document.querySelector(`.sidebar-link[href="${targetId}"]`);
+    if (!activeLink) return;
+
+    activeLink.classList.add('active');
+    centerSidebarLink(activeLink, smooth);
+}
+
+function centerSidebarLink(activeLink, smooth) {
+    const sidebar = document.getElementById('sidebar');
+    if (!sidebar) return;
+
+    const linkTop = activeLink.offsetTop;
+    const linkHeight = activeLink.offsetHeight;
+    const targetScrollTop = linkTop - (sidebar.clientHeight / 2) + (linkHeight / 2);
+
+    sidebar.scrollTo({
+        top: Math.max(0, targetScrollTop),
+        behavior: smooth ? 'smooth' : 'auto'
     });
 }
 
